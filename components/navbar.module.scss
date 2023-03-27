@@ -1,0 +1,12 @@
+@import "styles/variables";
+
+.navbar {
+  display: flex;
+  background-color: $secondaryColor;
+  color: white;
+  padding: 1rem;
+}
+
+.link {
+  text-decoration: none;
+}
