@@ -2,11 +2,50 @@
 
 .navbar {
   display: flex;
-  background-color: $secondaryColor;
-  color: white;
   padding: 1rem;
+  justify-content: space-around;
+  border-bottom-right-radius: 60px;
+  color: white;
+  background-color: $secondaryColor;
 }
 
 .link {
+  display: block;
   text-decoration: none;
+  color: rgb(255, 255, 255);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.linkActive {
+  text-decoration: none;
+  transform: scale(1.2);
+  color: $navDetailColor;
+  pointer-events: none;
+}
+
+.hamburgerMenu {
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  width: 200px;
+  padding: 1rem;
+  color: white;
+  background-color: $secondaryColor;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    justify-content: left;
+  }
 }
