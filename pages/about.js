@@ -1,10 +1,12 @@
+import About from "@/components/about";
 import Navbar from "@/components/navbar";
+import Recipe from "@/components/recipe";
 
-export default function About() {
+export default function AboutUs() {
   return (
     <>
       <Navbar />
-      <h1>About Us</h1>
+      <About />
     </>
   );
 }
