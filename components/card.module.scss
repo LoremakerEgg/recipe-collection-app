@@ -1,0 +1,37 @@
+@import "styles/variables";
+
+.card {
+  display: flex;
+  background-color: $secondaryColor;
+  border-radius: 1rem;
+  justify-content: space-evenly;
+  align-items: center;
+  .cardImage {
+    max-height: 75%;
+    width: 55%;
+    border-radius: 1rem;
+  }
+  .innerCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+      font-size: 19px;
+      margin-top: 5%;
+    }
+  }
+  .cardButton {
+    background-color: $buttonColor;
+    border-radius: 1rem;
+    border: none;
+    padding: 20px;
+    margin-bottom: 2px;
+    &:hover {
+      cursor: pointer;
+      background-color: $navDetailColor;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}

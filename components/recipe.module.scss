@@ -1,0 +1,76 @@
+@import "styles/variables";
+
+.recipeSection {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  .recipeDiv {
+    display: flex;
+    background-color: $secondaryColor;
+    width: 75%;
+    flex-direction: column;
+    img {
+      max-height: 75%;
+      width: 20%;
+      border-radius: 1rem;
+      margin: 10px 10px;
+    }
+  }
+  ul {
+    list-style: none;
+    margin-left: -30px;
+  }
+  .recipeChild {
+    display: flex;
+    align-items: center;
+    .buttonDiv {
+      display: flex;
+      flex-direction: column;
+      .cardButton {
+        background-color: $buttonColor;
+        border-radius: 1rem;
+        border: none;
+        padding: 15px;
+        margin-top: 3%;
+        &:hover {
+          cursor: pointer;
+          background-color: $navDetailColor;
+        }
+      }
+    }
+    .menuDiv {
+      margin-left: 40px;
+    }
+  }
+  .ingredientsDiv {
+    width: 25%;
+    margin-left: 20px;
+    ul {
+      list-style: none;
+      margin-left: -30px;
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .recipeSection {
+    flex-direction: column;
+    background-color: $secondaryColor;
+    .recipeDiv {
+      width: 100%;
+      img {
+        max-height: 75%;
+        width: 35% !important;
+      }
+      .menuDiv {
+        h3 {
+          margin-left: 10px;
+        }
+      }
+    }
+    .ingredientsDiv {
+      background-color: $secondaryColor;
+      margin: 10px;
+    }
+  }
+}

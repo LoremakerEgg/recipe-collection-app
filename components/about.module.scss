@@ -1,0 +1,58 @@
+.aboutMain {
+  h1 {
+    margin: auto;
+    width: 325px;
+  }
+  a {
+    text-decoration: none;
+  }
+  .aboutSection {
+    display: flex;
+    justify-content: space-evenly;
+    .firstMemberDiv,
+    .secondMemberDiv,
+    .thirdMemberDiv {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .firstMemberDiv {
+      img {
+        width: 30%;
+      }
+      ul {
+        margin-right: 25px;
+      }
+    }
+    .secondMemberDiv {
+      img {
+        width: 30%;
+      }
+      ul {
+        margin-right: 25px;
+      }
+    }
+    .thirdMemberDiv {
+      img {
+        width: 30%;
+      }
+      ul {
+        margin-right: 25px;
+      }
+    }
+  }
+  .linkDiv {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    a {
+      margin-left: 5px;
+      width: 150px;
+    }
+  }
+}
+@media only screen and (max-width: 900px) {
+  .aboutSection {
+    flex-direction: column;
+  }
+}
