@@ -1,19 +1,30 @@
 // import styles from "./searchFilter.module.scss";
-import { useState } from "react";
+import { useState, useEffect, useContext, createContext } from "react";
+import { useRandomContext } from "@/context/randomRecipe";
 
 export default function SearchFilter() {
+  const { randomRecipe, setRandomRecipe } = useRandomContext();
   const [quickRecipe, setQuickRecipe] = useState(false);
   const [show, setShow] = useState(0);
   const [include, setInclude] = useState(false);
   const [exclude, setExclude] = useState(false);
 
-  const fetchRandom = (e) => {
-    e.preventDefault();
+  const fetchRandom = () => {
     fetch("http://localhost:3000/api/fetchrandom")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.recipes[0]);
+        setRandomRecipe(data.recipes[0]);
       });
+  };
+
+  useEffect(() => {
+    fetchRandom();
+  }, []);
+
+  const handleRandomClick = (e) => {
+    e.preventDefault();
+    console.log(randomRecipe);
+    fetchRandom();
   };
   const handleShow3 = () => {
     setShow(3);
@@ -36,7 +47,7 @@ export default function SearchFilter() {
       <div className="filterContainer">
         <form className="searchForm">
           <fieldset>
-            <button onClick={fetchRandom}>Random Recipe</button>
+            <button onClick={handleRandomClick}>Random Recipe</button>
           </fieldset>
           <fieldset>
             <input type="radio" id="include" name="includeExclude" />

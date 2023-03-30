@@ -1,9 +1,11 @@
 import { createContext, useContext } from "react";
 import styles from "./card.module.scss";
+import { useRandomContext } from "@/context/randomRecipe";
 
 export const MenuContext = createContext();
 
 export default function Card() {
+  const { randomRecipe } = useRandomContext();
   const { setShowRecipe } = useContext(MenuContext);
   const handleGroupClick = () => {
     console.log("'Add Group' button has been clicked");
@@ -17,31 +19,31 @@ export default function Card() {
     }
   };
 
-  return (
-    <div className={styles.card} onClick={handleCardClick}>
-      <img
-        className={styles.cardImage}
-        src="/eggs-benedict-burger.jpg"
-        alt="Food"
-      />
-      <div className={styles.innerCard}>
-        <p>BURGER</p>
-        <p>1 h</p>
-        <button
-          className={styles.cardButton}
-          onClick={handleGroupClick}
-          name="addGroup"
-        >
-          Add to Group
-        </button>
-        <button
-          className={styles.cardButton}
-          onClick={handleShoppingClick}
-          name="addGroup"
-        >
-          Shopping List
-        </button>
+  if (randomRecipe) {
+    return (
+      <div className={styles.card} onClick={handleCardClick}>
+        <img className={styles.cardImage} src={randomRecipe.image} alt="Food" />
+        <div className={styles.innerCard}>
+          <p>BURGER</p>
+          <p>1 h</p>
+          <button
+            className={styles.cardButton}
+            onClick={handleGroupClick}
+            name="addGroup"
+          >
+            Add to Group
+          </button>
+          <button
+            className={styles.cardButton}
+            onClick={handleShoppingClick}
+            name="addGroup"
+          >
+            Shopping List
+          </button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <div></div>;
+  }
 }

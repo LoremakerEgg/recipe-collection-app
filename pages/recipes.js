@@ -1,5 +1,4 @@
 import MultiCards from "@/components/multiCards";
-import Navbar from "@/components/navbar";
 import Recipe from "@/components/recipe";
 import { useState } from "react";
 import { MenuContext } from "@/components/card";
@@ -14,7 +13,6 @@ export default function Recipes() {
         <meta name="description" content="Recipe page" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <Navbar />
       <MenuContext.Provider value={{ setShowRecipe }}>
         {showRecipe ? <Recipe /> : <MultiCards />}
       </MenuContext.Provider>
