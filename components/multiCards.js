@@ -1,11 +1,11 @@
-import Card from "./card";
+import Card from "./randomCard";
 import styles from "./multiCards.module.scss";
 
 export default function MultiCards() {
   return (
     <>
       <h3 style={{ color: "#454545", marginLeft: "80px" }}>
-        Showing results for ´INPUT´:
+        Showing random recipe:
       </h3>
       <section className={styles.cardGrid}>
         <Card />

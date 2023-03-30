@@ -1,7 +1,7 @@
 import MultiCards from "@/components/multiCards";
 import Recipe from "@/components/recipe";
 import { useState } from "react";
-import { MenuContext } from "@/components/card";
+import { MenuContext } from "@/components/randomCard";
 import Head from "next/head";
 
 export default function Recipes() {

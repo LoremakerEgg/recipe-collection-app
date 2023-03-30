@@ -1,14 +1,17 @@
 import styles from "./recipe.module.scss";
-import { MenuContext } from "./card";
+import { MenuContext } from "./randomCard";
 import { useContext } from "react";
+import { useRandomContext } from "@/context/randomRecipe";
 
 export default function Recipe() {
   const { setShowRecipe } = useContext(MenuContext);
+  const { randomRecipe } = useRandomContext();
   const handleGroupClick = () => {
     console.log("'Add Group' button has been clicked");
   };
   const handleShoppingClick = () => {
     console.log("'Shopping List' button has been clicked");
+    console.log(randomRecipe);
   };
   const handleResultsClick = () => {
     setShowRecipe(false);
@@ -16,8 +19,9 @@ export default function Recipe() {
   return (
     <section className={styles.recipeSection}>
       <div className={styles.recipeDiv}>
+        <h3>{randomRecipe.title}</h3>
         <div className={styles.recipeChild}>
-          <img src="eggs-benedict-burger.jpg" />
+          <img src={randomRecipe.image} />
           <div className={styles.buttonDiv}>
             <button className={styles.cardButton} onClick={handleGroupClick}>
               Add to Group
@@ -31,38 +35,20 @@ export default function Recipe() {
           </div>
         </div>
         <div className={styles.menuDiv}>
-          <h3>MENU ITEM: </h3>
-          <ul>
-            <li>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </li>
-            <li>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </li>
-            <li>
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur.
-            </li>
-            <li>
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-              officia deserunt mollit anim id est laborum.
-            </li>
-            <li>XXXXXXXXX</li>
-            <li>XXXXXXXXX</li>
-          </ul>
+          <h3>Recipe Instructions: </h3>
+          <p>{randomRecipe.instructions}</p>
         </div>
       </div>
       <div className={styles.ingredientsDiv}>
-        <h3>INGREDIENTS: </h3>
+        <h3>Ingredients: </h3>
         <ul>
-          <li>XXXXXXXXX</li>
-          <li>XXXXXXXXX</li>
-          <li>XXXXXXXXX</li>
-          <li>XXXXXXXXX</li>
-          <li>XXXXXXXXX</li>
-          <li>XXXXXXXXX</li>
+          {randomRecipe.extendedIngredients.map(
+            ({ originalName, amount, unit, id }) => (
+              <li key={id}>
+                {amount} {unit} {originalName}
+              </li>
+            )
+          )}
         </ul>
       </div>
     </section>
