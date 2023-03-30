@@ -4,10 +4,9 @@ import { useRandomContext } from "@/context/randomRecipe";
 
 export default function SearchFilter() {
   const { randomRecipe, setRandomRecipe } = useRandomContext();
-  const [quickRecipe, setQuickRecipe] = useState(false);
-  const [show, setShow] = useState(0);
-  const [include, setInclude] = useState(false);
-  const [exclude, setExclude] = useState(false);
+  const { quickRecipe, setQuickRecipe } = useState();
+  const { show, setShow } = useState();
+  const { include, setInclude } = useState();
 
   const fetchRandom = () => {
     fetch("http://localhost:3000/api/fetchrandom")
@@ -36,10 +35,10 @@ export default function SearchFilter() {
     setShow(10);
   };
   const handleInclude = () => {
-    setInclude((prev) => !prev);
+    setInclude(true);
   };
   const handleExclude = () => {
-    setExclude((prev) => !prev);
+    setInclude(false);
   };
 
   const HandleOnCheck = () => {
@@ -70,7 +69,7 @@ export default function SearchFilter() {
               name="includeExclude"
             />
             <label htmlFor="exclude">Exclude:</label>
-            {/* TODO ingredient value */}
+            {/* TODO ingredient value as state */}
             <select id="ingredient" name="ingredient">
               <option>Ingredient</option>
               <option value="chicken">Chicken</option>
