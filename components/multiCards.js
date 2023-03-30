@@ -1,4 +1,4 @@
-import Card from "./randomCard";
+import Card from "./card";
 import styles from "./multiCards.module.scss";
 
 export default function MultiCards() {
