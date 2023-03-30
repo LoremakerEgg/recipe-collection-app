@@ -9,11 +9,16 @@
     background-color: $secondaryColor;
     width: 75%;
     flex-direction: column;
+    border-radius: 1rem;
     img {
       max-height: 75%;
       width: 20%;
       border-radius: 1rem;
       margin: 10px 10px;
+    }
+    h3,
+    p {
+      margin-left: 10px;
     }
   }
   ul {
