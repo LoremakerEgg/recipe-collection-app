@@ -35,6 +35,12 @@ export default function SearchFilter() {
   const handleShow10 = () => {
     setShow(10);
   };
+  const handleInclude = () => {
+    setInclude((prev) => !prev);
+  };
+  const handleExclude = () => {
+    setExclude((prev) => !prev);
+  };
 
   const HandleOnCheck = () => {
     setQuickRecipe((prev) => !prev);
@@ -50,9 +56,19 @@ export default function SearchFilter() {
             <button onClick={handleRandomClick}>Random Recipe</button>
           </fieldset>
           <fieldset>
-            <input type="radio" id="include" name="includeExclude" />
+            <input
+              onClick={handleInclude}
+              type="radio"
+              id="include"
+              name="includeExclude"
+            />
             <label htmlFor="include">Include:</label>
-            <input type="radio" id="exclude" name="includeExclude" />
+            <input
+              onClick={handleExclude}
+              type="radio"
+              id="exclude"
+              name="includeExclude"
+            />
             <label htmlFor="exclude">Exclude:</label>
             {/* TODO ingredient value */}
             <select id="ingredient" name="ingredient">
