@@ -1,40 +1,44 @@
-.aboutMain {
-  h1 {
-    margin: auto;
-    width: 325px;
-  }
-  a {
-    text-decoration: none;
-  }
-  .aboutSection {
+@import "styles/variables";
+
+.aboutSection {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  .memberDiv {
     display: flex;
-    justify-content: space-evenly;
-    .memberDiv {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
+    .name {
+      color: $navDetailColor;
     }
-    .memberDiv {
-      img {
-        width: 30%;
-      }
-      ul {
-        margin-right: 25px;
-      }
+    img {
+      width: 30%;
+    }
+    ul {
+      margin-right: 25px;
     }
   }
-  .linkDiv {
+  .githubContainer {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 20px;
-    a {
+    .link {
       margin-left: 5px;
       width: 150px;
+      color: $navDetailColor;
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 }
+
 @media only screen and (max-width: 900px) {
   .aboutSection {
     flex-direction: column;
+    gap: 50px;
   }
 }
