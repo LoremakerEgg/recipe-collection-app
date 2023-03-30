@@ -7,11 +7,12 @@ export default function SearchFilter() {
   const [include, setInclude] = useState(false);
   const [exclude, setExclude] = useState(false);
 
-  const fetchRandom = () => {
-    fetch("http://localhost:3000/api/fetchtest")
+  const fetchRandom = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:3000/api/fetchrandom")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log(data.recipes[0]);
       });
   };
   const handleShow3 = () => {

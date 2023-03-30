@@ -5,7 +5,7 @@ export default function About() {
     <main className={styling.aboutMain}>
       <h1>About the Developers</h1>
       <section className={styling.aboutSection}>
-        <div className={styling.firstMemberDiv}>
+        <div className={styling.memberDiv}>
           <h2>AGATA JANISZEWSKA</h2>
           <img src="agata-placeholder.jpg" />
           <p>INFO GOES HERE</p>
@@ -23,7 +23,7 @@ export default function About() {
             </a>
           </div>
         </div>
-        <div className={styling.secondMemberDiv}>
+        <div className={styling.memberDiv}>
           <h2>ANTON KOLLER</h2>
           <img src="anton-placeholder.jpg" />
           <p>INFO GOES HERE</p>
@@ -41,7 +41,7 @@ export default function About() {
             </a>
           </div>
         </div>
-        <div className={styling.thirdMemberDiv}>
+        <div className={styling.memberDiv}>
           <h2>EMMA LINDAHL</h2>
           <img src="emma-placeholder.jpg" />
           <p>INFO GOES HERE</p>

@@ -9,30 +9,12 @@
   .aboutSection {
     display: flex;
     justify-content: space-evenly;
-    .firstMemberDiv,
-    .secondMemberDiv,
-    .thirdMemberDiv {
+    .memberDiv {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    .firstMemberDiv {
-      img {
-        width: 30%;
-      }
-      ul {
-        margin-right: 25px;
-      }
-    }
-    .secondMemberDiv {
-      img {
-        width: 30%;
-      }
-      ul {
-        margin-right: 25px;
-      }
-    }
-    .thirdMemberDiv {
+    .memberDiv {
       img {
         width: 30%;
       }
