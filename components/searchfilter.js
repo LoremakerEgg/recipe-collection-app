@@ -1,6 +1,10 @@
 // import styles from "./searchFilter.module.scss";
 import { useState, useEffect, useContext, createContext } from "react";
 import { useRandomContext } from "@/context/randomRecipe";
+import { useNRecipesContext } from "@/context/showNRecipes";
+import { useIncludeContext } from "@/context/include";
+import { useIngredientContext } from "@/context/ingredient";
+import { useResultContext } from "@/context/resultArray";
 
 export default function SearchFilter() {
   const { randomRecipe, setRandomRecipe } = useRandomContext();
