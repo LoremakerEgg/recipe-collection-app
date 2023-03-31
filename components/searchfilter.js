@@ -1298,19 +1298,14 @@ export default function SearchFilter() {
               onClick={handleQuickSubmit}
             />
           </fieldset>
-          <form className={styles.showNForm}>
-            <input onClick={handleShow3} type="radio" id="show3" name="show" />
-            <label htmlFor="show3">Show 3 recipes</label>
-            <input onClick={handleShow5} type="radio" id="show5" name="show" />
-            <label htmlFor="show5">Show 5 recipes</label>
-            <input
-              onClick={handleShow10}
-              type="radio"
-              id="show10"
-              name="show"
-            />
-            <label htmlFor="show10">Show 10 recipes</label>
-          </form>
+        </form>
+        <form className={styles.showNForm}>
+          <input onClick={handleShow3} type="radio" id="show3" name="show" />
+          <label htmlFor="show3">Show 3 recipes</label>
+          <input onClick={handleShow5} type="radio" id="show5" name="show" />
+          <label htmlFor="show5">Show 5 recipes</label>
+          <input onClick={handleShow10} type="radio" id="show10" name="show" />
+          <label htmlFor="show10">Show 10 recipes</label>
         </form>
       </div>
     </div>
