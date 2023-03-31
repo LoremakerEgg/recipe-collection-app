@@ -12,6 +12,6 @@ export function QuickWrapper({ children }) {
   );
 }
 
-export function useResultContext() {
+export function useQuickReipeContext() {
   return useContext(QuickRecipeContext);
 }

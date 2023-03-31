@@ -7,6 +7,7 @@ import { IncludeWrapper } from "@/context/include";
 
 import "@/styles/globals.scss";
 import { Lato } from "next/font/google";
+import { FullRecipekWrapper } from "@/context/showFullRecipe";
 
 const lato = Lato({ weight: "400", subsets: ["latin"] });
 
@@ -19,9 +20,11 @@ export default function App({ Component, pageProps }) {
           <IncludeWrapper>
             <IngredientWrapper>
               <NRecipesWrapper>
-                <main className={lato.className}>
-                  <Component {...pageProps} />
-                </main>
+                <FullRecipekWrapper>
+                  <main className={lato.className}>
+                    <Component {...pageProps} />
+                  </main>
+                </FullRecipekWrapper>
               </NRecipesWrapper>
             </IngredientWrapper>
           </IncludeWrapper>
