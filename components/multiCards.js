@@ -1,7 +1,9 @@
 import Card from "./card";
 import styles from "./multiCards.module.scss";
+import { useResultContext } from "@/context/resultArray";
 
 export default function MultiCards() {
+  const { resultArray } = useResultContext();
   return (
     <>
       <h3 style={{ color: "#454545", marginLeft: "80px" }}>
