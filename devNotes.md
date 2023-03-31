@@ -21,3 +21,21 @@ const { resultArray } = useResultContext();
 use as:
 resultArray.ObejctKeyName(s)
 ?resultArray(What you want)?
+
+const fetchInclude = () => {
+fetch("http://localhost:3000/api/fetchinclude")
+.then((res) => res.json())
+.then((data) => {
+console.log(data);
+// setResultArray(data);
+});
+}; //unfinished functionality, needs to be implemented in conjunction with ability to filter ingredients (get form data from include/exclude)
+
+const fetchExclude = () => {
+fetch("http://localhost:3000/api/fetchexclude")
+.then((res) => res.json())
+.then((data) => {
+console.log(data);
+// setResultArray(data);
+});
+}; //unfinished functionality, needs to be implemented in conjunction with ability to filter ingredients (get form data from include/exclude)
