@@ -1,11 +1,10 @@
 import { createContext, useContext } from "react";
 import styles from "./card.module.scss";
 import { useResultContext } from "@/context/resultArray";
-
-export const MenuContext = createContext();
+import { useShowFullRecipeContext } from "@/context/showFullRecipe";
 
 export default function Card() {
-  const { setShowRecipe } = useContext(MenuContext); // Are we using this now?
+  const { setShowFullRecipe } = useShowFullRecipeContext();
   const { resultArray } = useResultContext();
   const handleGroupClick = () => {
     console.log("'Add Group' button has been clicked");
@@ -15,7 +14,7 @@ export default function Card() {
   };
   const handleCardClick = (event) => {
     if (event.target.name != "addGroup") {
-      setShowRecipe(true);
+      setShowFullRecipe(true);
     }
   };
 
