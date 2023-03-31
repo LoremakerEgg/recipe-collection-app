@@ -92,24 +92,21 @@ export default function SearchFilter() {
                 <input
                   classname={styles.filterButton}
                   type="submit"
+                  value="Include"
                   onSubmit={handleInclude}
-                >
-                  Include
-                </input>
+                />
                 <input
                   classname={styles.filterButton}
                   type="submit"
+                  value="Exclude"
                   onSubmit={handleExclude}
-                >
-                  Exclude
-                </input>
+                />
                 <input
                   classname={styles.filterButton}
                   type="submit"
+                  value="Reset"
                   onSubmit={handleIngredientReset}
-                >
-                  Reset
-                </input>
+                />
               </div>
             </div>
           </fieldset>
@@ -119,10 +116,9 @@ export default function SearchFilter() {
             <input
               classname={styles.filterButton}
               type="submit"
+              value="Quick recipes 30min or less"
               onSubmit={handleQuickSubmit}
-            >
-              Quick recipes 30min or less
-            </input>
+            />
           </fieldset>
           <form className={styles.showNForm}>
             <input onClick={handleShow3} type="radio" id="show3" name="show" />
