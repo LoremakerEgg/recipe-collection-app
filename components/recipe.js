@@ -1,16 +1,19 @@
 import styles from "./recipe.module.scss";
 import { useRandomContext } from "@/context/randomRecipe";
+import { useResultContext } from "@/context/resultArray";
 import { useShowFullRecipeContext } from "@/context/showFullRecipe";
 
 export default function Recipe() {
   const { showFullRecipe, setShowFullRecipe } = useShowFullRecipeContext();
   const { randomRecipe } = useRandomContext();
+  const { resultArray } = useResultContext();
+
   const handleGroupClick = () => {
     console.log("'Add Group' button has been clicked");
   };
   const handleShoppingClick = () => {
     console.log("'Shopping List' button has been clicked");
-    console.log(randomRecipe);
+    console.log(resultArray);
   };
   const handleResultsClick = () => {
     setShowFullRecipe(false);
@@ -18,9 +21,9 @@ export default function Recipe() {
   return (
     <section className={styles.recipeSection}>
       <div className={styles.recipeDiv}>
-        <h3>{randomRecipe.title}</h3>
+        <h3>{resultArray.recipes[0].title}</h3>
         <div className={styles.recipeChild}>
-          <img src={randomRecipe.image} />
+          <img src={resultArray.recipes[0].image} />
           <div className={styles.buttonDiv}>
             <button className={styles.cardButton} onClick={handleGroupClick}>
               Add to Group
@@ -35,13 +38,13 @@ export default function Recipe() {
         </div>
         <div className={styles.menuDiv}>
           <h3>Recipe Instructions: </h3>
-          <p>{randomRecipe.instructions}</p>
+          <p>{resultArray.recipes[0].instructions}</p>
         </div>
       </div>
       <div className={styles.ingredientsDiv}>
         <h3>Ingredients: </h3>
         <ul>
-          {randomRecipe.extendedIngredients.map(
+          {resultArray.recipes[0].extendedIngredients.map(
             ({ originalName, amount, unit, id }) => (
               <li key={id}>
                 {amount} {unit} {originalName}

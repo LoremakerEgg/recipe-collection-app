@@ -6,11 +6,15 @@ export default function MultiCards() {
   const { resultArray } = useResultContext();
   let cards;
 
-  if (resultArray.length) {
-    cards = resultArray.results.map(({ title, image, id }) => (
-      <Card title={title} image={image} key={id} />
-    ));
-  }
+  // if (resultArray[0] === "recipes") {
+  cards = resultArray.recipes.map(({ title, image, id }) => (
+    <Card title={title} image={image} key={id} />
+  ));
+  // } else if (resultArray[0] === "results") {
+  //   cards = resultArray.results.map(({ title, image, id }) => (
+  //     <Card title={title} image={image} key={id} />
+  //   ));
+  // }
 
   return (
     <>
