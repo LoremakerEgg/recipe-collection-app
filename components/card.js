@@ -3,7 +3,7 @@ import styles from "./card.module.scss";
 import { useResultContext } from "@/context/resultArray";
 import { useShowFullRecipeContext } from "@/context/showFullRecipe";
 
-export default function Card() {
+export default function Card(props) {
   const { setShowFullRecipe } = useShowFullRecipeContext();
   const { resultArray } = useResultContext();
   const handleGroupClick = () => {
@@ -47,15 +47,11 @@ export default function Card() {
     <div className={styles.card} onClick={handleCardClick}>
       <img
         className={styles.cardImage}
-        src={
-          resultArray.image
-            ? resultArray.image
-            : "./public/eggs-benedict-burger.jpg"
-        }
+        src={props.image ? props.image : "/eggs-benedict-burger.jpg"}
         alt="Serving suggestion for recipe"
       />
       <div className={styles.innerCard}>
-        <p>{resultArray.title ? resultArray.title : "Recipe"}</p>
+        <p>{props.title ? props.title : "Recipe"}</p>
         <p>
           {resultArray.readyInMinutes
             ? `Cooking time: ${resultArray.readyInMinutes} minutes`

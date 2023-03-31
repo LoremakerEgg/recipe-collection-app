@@ -2,8 +2,11 @@ import SearchFilter from "@/components/searchfilter";
 import Navbar from "@/components/navbar";
 import Head from "next/head";
 import Recipes from "./recipes";
+import { useEffect } from "react";
+import { useResultContext } from "@/context/resultArray";
 
 export default function Home() {
+  const { resultArray, setResultArray } = useResultContext();
   return (
     <>
       <Head>
@@ -14,7 +17,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <SearchFilter />
-      <Recipes />
+      {resultArray.length ? <Recipes /> : ""}
     </>
   );
 }
