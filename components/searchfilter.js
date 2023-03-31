@@ -45,9 +45,9 @@ export default function SearchFilter() {
     setInclude(1);
   };
 
-  const handleExclude = () => {
-    setInclude(2);
-  };
+  // const handleExclude = () => {
+  //   setInclude(2);
+  // };
   const handleIngredient = (e) => {
     setIngredient(e.target.value);
     console.log(ingredient);
@@ -93,18 +93,21 @@ export default function SearchFilter() {
                   classname={styles.filterButton}
                   type="submit"
                   value="Include"
+                  name="include"
                   onSubmit={handleInclude}
                 />
-                <input
+                {/* <input
                   classname={styles.filterButton}
                   type="submit"
                   value="Exclude"
+                  name="exclude"
                   onSubmit={handleExclude}
-                />
+                /> */}
                 <input
                   classname={styles.filterButton}
                   type="submit"
                   value="Reset"
+                  name="reset"
                   onSubmit={handleIngredientReset}
                 />
               </div>
@@ -117,6 +120,7 @@ export default function SearchFilter() {
               classname={styles.filterButton}
               type="submit"
               value="Quick recipes 30min or less"
+              name="quick"
               onSubmit={handleQuickSubmit}
             />
           </fieldset>
