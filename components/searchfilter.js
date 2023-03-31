@@ -1,16 +1,18 @@
 // import styles from "./searchFilter.module.scss";
-import { useState, useEffect, useContext, createContext } from "react";
+import { useState, useEffect } from "react";
 import { useRandomContext } from "@/context/randomRecipe";
 import { useNRecipesContext } from "@/context/showNRecipes";
 import { useIncludeContext } from "@/context/include";
 import { useIngredientContext } from "@/context/ingredient";
 import { useResultContext } from "@/context/resultArray";
+import { useQuickReipeContext } from "@/context/quickRecipe";
 
 export default function SearchFilter() {
   const { randomRecipe, setRandomRecipe } = useRandomContext();
-  const { quickRecipe, setQuickRecipe } = useState();
-  const { show, setShow } = useState();
-  const { include, setInclude } = useState();
+  const { quickRecipe, setQuickRecipe } = useQuickReipeContext();
+  const { showNRec, setShowNRec } = useNRecipesContext();
+  const { include, setInclude } = useIncludeContext();
+  const { ingredient, setIngredient } = useIngredientContext();
 
   const fetchRandom = () => {
     fetch("http://localhost:3000/api/fetchrandom")
@@ -30,13 +32,13 @@ export default function SearchFilter() {
     fetchRandom();
   };
   const handleShow3 = () => {
-    setShow(3);
+    setShowNRec(3);
   };
   const handleShow5 = () => {
-    setShow(5);
+    setShowNRec(5);
   };
   const handleShow10 = () => {
-    setShow(10);
+    setShowNRec(10);
   };
   const handleInclude = () => {
     setInclude(true);

@@ -1,10 +1,9 @@
 import styles from "./recipe.module.scss";
-import { MenuContext } from "./randomCard";
-import { useContext } from "react";
 import { useRandomContext } from "@/context/randomRecipe";
+import { useShowFullRecipeContext } from "@/context/showFullRecipe";
 
 export default function Recipe() {
-  const { setShowRecipe } = useContext(MenuContext);
+  const { showFullRecipe, setShowFullRecipe } = useShowFullRecipeContext();
   const { randomRecipe } = useRandomContext();
   const handleGroupClick = () => {
     console.log("'Add Group' button has been clicked");
@@ -14,7 +13,7 @@ export default function Recipe() {
     console.log(randomRecipe);
   };
   const handleResultsClick = () => {
-    setShowRecipe(false);
+    setShowFullRecipe(false);
   };
   return (
     <section className={styles.recipeSection}>
