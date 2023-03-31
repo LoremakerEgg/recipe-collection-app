@@ -1,0 +1,41 @@
+@import "styles/variables";
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+
+  .filterContainer {
+    .randomField {
+      border: 2px solid gray;
+      border-radius: 30%;
+    }
+    .inclusionField {
+      display: flex;
+      flex-direction: column;
+      .inclusionChoiceContainer {
+      }
+      .ingredientcontainer {
+      }
+      .inclusionButton {
+      }
+    }
+    .timeField {
+      .quickButton {
+      }
+    }
+    .showNForm {
+    }
+  }
+}
+.filterButton {
+  background-color: $primaryColor;
+  border-radius: 1rem;
+  border: none;
+  padding: 20px;
+  margin-bottom: 2px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $navDetailColor;
+  }
+}
