@@ -5,11 +5,17 @@ const NavbarLarge = () => {
   //För att få aktiva Länkar.
   let aboutActive = false;
   let homeActive = false;
+  let myRecipesActive = false;
+  let shoppingListActive = false;
   const router = useRouter();
   if (router.pathname == "/about") {
     aboutActive = true;
   } else if (router.pathname == "/") {
     homeActive = true;
+  } else if (router.pathname == "/MyRecipes") {
+    myRecipesActive = true;
+  } else if (router.pathname == "/shoppingList") {
+    shoppingListActive = true;
   }
 
   return (
@@ -18,8 +24,18 @@ const NavbarLarge = () => {
         <a className={homeActive ? styles.linkActive : styles.link} href="./">
           <h2>Home</h2>
         </a>
-        <h2>Group</h2>
-        <h2>Shopping List</h2>
+        <a
+          className={myRecipesActive ? styles.linkActive : styles.link}
+          href="./MyRecipes"
+        >
+          <h2>My Recipes</h2>
+        </a>
+        <a
+          className={shoppingListActive ? styles.linkActive : styles.link}
+          href="./shoppingList"
+        >
+          <h2>Shopping List</h2>
+        </a>
         <a
           className={aboutActive ? styles.linkActive : styles.link}
           href="./about"
