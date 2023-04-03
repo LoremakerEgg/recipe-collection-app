@@ -1,41 +1,129 @@
 @import "styles/variables";
 
-.mainContainer {
-  display: flex;
-  flex-direction: column;
-
-  .filterContainer {
-    .randomField {
-      border: 2px solid gray;
-      border-radius: 30%;
-    }
-    .inclusionField {
-      display: flex;
-      flex-direction: column;
-      .inclusionChoiceContainer {
-      }
-      .ingredientcontainer {
-      }
-      .inclusionButton {
-      }
-    }
-    .timeField {
-      .quickButton {
-      }
-    }
-    .showNForm {
-    }
-  }
-}
-.filterButton {
-  background-color: $primaryColor;
+.button {
+  background-color: $secondaryColor;
   border-radius: 1rem;
   border: none;
-  padding: 20px;
+  padding: 15px;
   margin-bottom: 2px;
+  font-size: 1rem;
 
   &:hover {
     cursor: pointer;
     background-color: $navDetailColor;
+  }
+}
+.fieldset {
+  height: auto;
+  border: 2px solid $buttonColor;
+  border-radius: 2rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: none;
+
+  .headerLarge {
+    font-size: 4rem;
+    padding-bottom: none;
+    margin-bottom: 5px;
+  }
+  .choiceWrapper {
+    @extend .mainContainer;
+    .headerMedium {
+      margin-bottom: 1px;
+      padding-bottom: 0px;
+      margin-left: 0px;
+      align-self: flex-start;
+    }
+
+    .filterContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      margin-top: none;
+      min-width: fit-content;
+
+      .leftContainer {
+        .randomForm {
+          .randomField {
+            @extend .fieldset;
+            display: flex;
+            justify-content: flex-start;
+            .randomButton {
+              @extend .button;
+            }
+          }
+        }
+        .timeForm {
+          .timeField {
+            @extend .fieldset;
+            .timeButton {
+              @extend .button;
+            }
+          }
+        }
+      }
+      .inclusionForm {
+        .inclusionField {
+          @extend .fieldset;
+          margin-bottom: 15px;
+
+          .inclusionChoiceContainer {
+            @extend .filterContainer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            .ingredientContainer {
+              min-width: 250px;
+              padding-left: 25px;
+              padding-right: 25px;
+              margin-right: 30px;
+              margin-left: 30px;
+
+              .ingredientSelect {
+                @extend .button;
+                background-color: $secondaryColor;
+              }
+            }
+            .inclusionChoice {
+              display: flex;
+              justify-content: space-between;
+              margin-top: none;
+              min-width: 250px;
+              .includeButtonWrapper {
+                .includeButton {
+                  @extend .button;
+                  margin-top: 5px;
+                }
+              }
+              .resetButton {
+                @extend .button;
+                margin-top: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .choiceWrapper {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .filterContainer {
+      flex-direction: column;
+    }
   }
 }
