@@ -1,7 +1,7 @@
 @import "styles/variables";
 
 .button {
-  background-color: $secondaryColor;
+  background-color: $buttonColor;
   border-radius: 1rem;
   border: none;
   padding: 15px;
@@ -93,7 +93,7 @@
 
               .ingredientSelect {
                 @extend .button;
-                background-color: $secondaryColor;
+                background-color: $buttonColor;
               }
             }
             .inclusionChoice {
