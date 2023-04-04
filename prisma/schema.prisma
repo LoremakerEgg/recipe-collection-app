@@ -12,26 +12,26 @@ datasource db {
 
 model AllRecipes {
   id                  Int                   @id @unique
-  recipeTitle         String
-  recipeImageURL      String
-  cookingTime         Int
-  servings            Int
+  recipeTitle         String 
+  recipeImageURL      String? 
+  cookingTime         Int? 
+  servings            Int? 
   randomId            Int                   @default(autoincrement())
   CookingInstructions CookingInstructions[]
   Ingredients         Ingredients[]
 }
 
 model CookingInstructions {
-  instructionId Int        @id @unique
-  instructions  String
+  instructionId Int        @id @unique @default(autoincrement())
+  instructions  String ? 
   recipe        AllRecipes @relation(fields: [recipeId], references: [id])
   recipeId      Int
 }
 
 model Ingredients {
-  ingredientId Int        @id @unique
+  ingredientId Int         @id @unique
   recipe       AllRecipes @relation(fields: [recipeId], references: [id])
-  recipeId     Int
-  ingredient   String
-  amount       String
+  recipeId     Int 
+  ingredient   String 
+  amount       String 
 }
