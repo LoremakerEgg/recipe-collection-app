@@ -21,11 +21,13 @@ export default function SearchFilter() {
   // const { include, setInclude } = useIncludeContext();
   const { ingredient, setIngredient } = useIngredientContext();
 
+
+
   const fetchRecipeRandom = () => {
     fetch("http://localhost:3000/api/fetchrandom")
       .then((res) => res.json())
       .then((data) => {
-        setRandomRecipe(data.recipes[0]);
+        setResultArray(data.recipes[0]);
       });
   };
 
@@ -51,16 +53,24 @@ export default function SearchFilter() {
 
   const handleRandomClick = (e) => {
     e.preventDefault();
-    setResultArray(oneRecipe);
     console.log(resultArray);
+    fetchRecipeRandom();
   };
+
+  // const handleRandomClick = (e) => {
+  //   e.preventDefault();
+  //   setResultArray(randomRecipe);
+  //   console.log(randomRecipe);
+  // };
 
   const handleShow3 = () => {
     setShowNRec(3);
   };
+
   const handleShow5 = () => {
     setShowNRec(5);
   };
+
   const handleShow10 = () => {
     setShowNRec(10);
   };
@@ -75,6 +85,7 @@ export default function SearchFilter() {
   // const handleExclude = () => {
   //   setInclude(2);
   // };
+
   const handleIngredient = (e) => {
     setIngredient(e.target.value);
     console.log(ingredient);

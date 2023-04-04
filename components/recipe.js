@@ -21,9 +21,9 @@ export default function Recipe() {
   return (
     <section className={styles.recipeSection}>
       <div className={styles.recipeDiv}>
-        <h3>{resultArray.recipes[0].title}</h3>
+        <h3>{resultArray.results.title}</h3>
         <div className={styles.recipeChild}>
-          <img src={resultArray.recipes[0].image} />
+          <img src={resultArray.results.image} />
           <div className={styles.buttonDiv}>
             <button className={styles.cardButton} onClick={handleGroupClick}>
               Add to Group
@@ -38,13 +38,13 @@ export default function Recipe() {
         </div>
         <div className={styles.menuDiv}>
           <h3>Recipe Instructions: </h3>
-          <p>{resultArray.recipes[0].instructions}</p>
+          <p>{resultArray.results.instructions}</p>
         </div>
       </div>
       <div className={styles.ingredientsDiv}>
         <h3>Ingredients: </h3>
         <ul>
-          {resultArray.recipes[0].extendedIngredients.map(
+          {resultArray.results.extendedIngredients.map(
             ({ originalName, amount, unit, id }) => (
               <li key={id}>
                 {amount} {unit} {originalName}
