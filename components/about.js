@@ -5,13 +5,13 @@ export default function About() {
     <section className={styling.aboutSection}>
       <div className={styling.memberDiv}>
         <h2 className={styling.name}>AGATA JANISZEWSKA</h2>
-        <img src="agata-placeholder.jpg" />
+        <img src="agata2.jpg" />
         <p className={styling.textsection}>
-          Agata is highly organized, with a strong background in --JobTitle!!.
-          She excels at keeping projects on track and ensuring that all team
-          members are working together effectively. With a focus on back-end
-          development, she can help ensure that your website or app is both
-          efficient and user-friendly.
+          Agata is highly organized, with a strong background in cognitive
+          science. She excels at keeping projects on track and ensuring that all
+          team members are working together effectively. With a focus on
+          back-end development, she can help ensure that your website or app is
+          both efficient and user-friendly.
         </p>
         <div className={styling.githubContainer}>
           <img src="github-mark.svg" height="40px" width="40px" />
@@ -26,7 +26,7 @@ export default function About() {
       </div>
       <div className={styling.memberDiv}>
         <h2 className={styling.name}>ANTON KOLLER</h2>
-        <img src="agata-placeholder.jpg" />
+        <img src="anton2.jpg" />
         <p className={styling.textsection}>
           Anton is a tech expert with a passion for back-end development. With a
           wealth of knowledge and experience, he can help optimize your website
@@ -47,7 +47,7 @@ export default function About() {
       </div>
       <div className={styling.memberDiv}>
         <h2 className={styling.name}>EMMA LINDAHL</h2>
-        <img src="agata-placeholder.jpg" />
+        <img src="emma2.jpg" />
         <p className={styling.textsection}>
           Emma is an experienced animator with a keen interest in dynamic CSS
           and micro animations. She brings a creative eye to web development and
