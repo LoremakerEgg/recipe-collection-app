@@ -2,10 +2,12 @@ import { useRandomContext } from "@/context/randomRecipe";
 import Card from "./card";
 import styles from "./multiCards.module.scss";
 import { useResultContext } from "@/context/resultArray";
+import { useNRecipesContext } from "@/context/showNRecipes";
 
 export default function MultiCards() {
   const { resultArray } = useResultContext();
   const { randomRecipe } = useRandomContext();
+  const { showNRec } = useNRecipesContext();
   let cards;
 
   // if (resultArray[0] === "recipes") {
@@ -14,9 +16,11 @@ export default function MultiCards() {
   //   ));
   // } else
   if (resultArray.results) {
-    cards = resultArray.results.map(({ title, image, id }) => (
-      <Card title={title} image={image} key={id} />
-    ));
+    cards = resultArray.results
+      .slice(0, showNRec)
+      .map(({ title, image, id }) => (
+        <Card title={title} image={image} key={id} />
+      ));
   } else if (resultArray.instructions) {
     cards = (
       <Card
@@ -29,10 +33,8 @@ export default function MultiCards() {
 
   return (
     <>
-      <h3 style={{ color: "#454545", marginLeft: "80px" }}>
-        Showing random recipe:
-      </h3>
+      <h3 style={{ color: "#454545", marginLeft: "80px" }}>Showing results:</h3>
       <section className={styles.cardGrid}>{cards ? cards : <Card />}</section>
     </>
-  ); //layout setup for future forEach placement when we have multiple cards to generate (import Card functionality from component into a grid)
+  );
 }

@@ -1163,6 +1163,12 @@ export default function SearchFilter() {
       .then((res) => res.json())
       .then((data) => {
         setResultArray(data.recipes[0]);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        console.log("Local fetch completed.");
       });
   };
 
@@ -1171,6 +1177,12 @@ export default function SearchFilter() {
       .then((res) => res.json())
       .then((data) => {
         setResultArray(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        console.log("Local fetch completed.");
       });
   };
 
@@ -1179,6 +1191,12 @@ export default function SearchFilter() {
       .then((res) => res.json())
       .then((data) => {
         setResultArray(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        console.log("Local fetch completed.");
       });
   };
 
