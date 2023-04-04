@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("postgresql://postgres:IHEUEX4pMBsFnyd9@db.ptqgqeiujpwbziabrzux.supabase.co:5432/postgres")
+}
+
+model AllRecipes {
+  recipeId  Int   @id @unique
+  recipeTitle String 
+  recipeImageURL String
+  cookingTime Int
+  servings Int
+  randomId Int @default(autoincrement())
+  instructionId Int
+}
+
+model CookingInstructions{
+  id Int @id @unique
+  instructions String
+  instruction CookingInstructions @relation(fields: [instructionId], references: [id])
+}
+
+model Ingredients{
+  ingredientId Int @id @unique
+  recipeId AllRecipes @relations(fields:[recipeId], references:)
+}

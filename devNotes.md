@@ -27,3 +27,5 @@ AFTER MVP:
 Create SQL fetch path for ID, (include, 30 mins or less) so that each card is clickable and shows the recipe/ingredients/instructions
 
 Create EXCLUDE functionality with SQL
+
+DATABASE PASSWORD: IHEUEX4pMBsFnyd9
