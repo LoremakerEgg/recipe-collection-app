@@ -1,5 +1,5 @@
 import styles from "./card.module.scss";
-import { useRandomContext } from "@/context/randomRecipe";
+import { useRandomContext } from "@/Archive/randomRecipe";
 import { useShowFullRecipeContext } from "@/context/showFullRecipe";
 
 // export const MenuContext = createContext();

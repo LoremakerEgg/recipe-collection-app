@@ -1,9 +1,9 @@
-import { RandomWrapper } from "@/context/randomRecipe";
+import { RandomWrapper } from "@/Archive/randomRecipe";
 import { ResultWrapper } from "@/context/resultArray";
-import { QuickWrapper } from "@/context/quickRecipe";
+import { QuickWrapper } from "@/Archive/quickRecipe";
 import { IngredientWrapper } from "@/context/ingredient";
 import { NRecipesWrapper } from "@/context/showNRecipes";
-import { IncludeWrapper } from "@/context/include";
+import { IncludeWrapper } from "@/Archive/include";
 
 import "@/styles/globals.scss";
 import { Lato } from "next/font/google";

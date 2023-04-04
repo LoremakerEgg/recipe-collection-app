@@ -1,5 +1,5 @@
 import styles from "./recipe.module.scss";
-import { useRandomContext } from "@/context/randomRecipe";
+import { useRandomContext } from "@/Archive/randomRecipe";
 import { useResultContext } from "@/context/resultArray";
 import { useShowFullRecipeContext } from "@/context/showFullRecipe";
 

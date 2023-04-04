@@ -5,23 +5,15 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import { useState, useEffect } from "react";
-import { useRandomContext } from "@/context/randomRecipe";
+
 import { useNRecipesContext } from "@/context/showNRecipes";
-import { useIncludeContext } from "@/context/include";
 import { useIngredientContext } from "@/context/ingredient";
 import { useResultContext } from "@/context/resultArray";
-import { useQuickReipeContext } from "@/context/quickRecipe";
 
 export default function SearchFilter() {
   const { resultArray, setResultArray } = useResultContext();
-  // const { randomRecipe, setRandomRecipe } = useRandomContext();
-  // const { quickRecipe, setQuickRecipe } = useQuickReipeContext();
-  // const { showNRec, setShowNRec } = useNRecipesContext();
-  // const { include, setInclude } = useIncludeContext();
+  const { showNRec, setShowNRec } = useNRecipesContext();
   const { ingredient, setIngredient } = useIngredientContext();
-
-
 
   const fetchRecipeRandom = () => {
     fetch("http://localhost:3000/api/fetchrandom")
@@ -65,21 +57,11 @@ export default function SearchFilter() {
       });
   };
 
-  // useEffect(() => {
-  //   fetchRecipeTime();
-  // }, []);
-
   const handleRandomClick = (e) => {
     e.preventDefault();
     console.log(resultArray);
     fetchRecipeRandom();
   };
-
-  // const handleRandomClick = (e) => {
-  //   e.preventDefault();
-  //   setResultArray(randomRecipe);
-  //   console.log(randomRecipe);
-  // };
 
   const handleShow3 = () => {
     setShowNRec(3);
@@ -95,12 +77,13 @@ export default function SearchFilter() {
 
   const handleInclude = (e) => {
     e.preventDefault();
-    // setInclude(1);
     fetchRecipeInclude();
+    // setInclude(1)
     // console.log(resultArray);
   };
 
-  // const handleExclude = () => {
+  // const handleExclude = (e) => {
+  // e.preventDefault();
   //   setInclude(2);
   // };
 
@@ -119,7 +102,6 @@ export default function SearchFilter() {
     e.preventDefault();
     fetchRecipeTime();
     console.log(resultArray);
-    // setQuickRecipe((prev) => !prev);
   };
 
   return (
@@ -249,38 +231,6 @@ export default function SearchFilter() {
             />
           </RadioGroup>
         </FormControl>
-        {/* <form className={styles.showNForm}>
-          <input
-            className={styles.showNRadio}
-            onClick={handleShow3}
-            type="radio"
-            id="show3"
-            name="show"
-          />
-          <label className={styles.showNText} htmlFor="show3">
-            Show 3
-          </label>
-          <input
-            className={styles.showNRadio}
-            onClick={handleShow5}
-            type="radio"
-            id="show5"
-            name="show"
-          />
-          <label className={styles.showNText} htmlFor="show5">
-            Show 5
-          </label>
-          <input
-            className={styles.showNRadio}
-            onClick={handleShow10}
-            type="radio"
-            id="show10"
-            name="show"
-          />
-          <label className={styles.showNText} htmlFor="show10">
-            Show 10
-          </label>
-        </form> */}
       </div>
     </div>
   );

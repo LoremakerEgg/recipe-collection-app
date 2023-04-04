@@ -1,4 +1,4 @@
-import { useRandomContext } from "@/context/randomRecipe";
+import { useRandomContext } from "@/Archive/randomRecipe";
 import Card from "./card";
 import styles from "./multiCards.module.scss";
 import { useResultContext } from "@/context/resultArray";
