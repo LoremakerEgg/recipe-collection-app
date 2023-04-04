@@ -10,6 +10,17 @@ import { useNRecipesContext } from "@/context/showNRecipes";
 import { useIngredientContext } from "@/context/ingredient";
 import { useResultContext } from "@/context/resultArray";
 
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    custom: {
+      main: "#B6D0CC",
+      contrastText: "#fff",
+    },
+  },
+});
+
 export default function SearchFilter() {
   const { resultArray, setResultArray } = useResultContext();
   const { showNRec, setShowNRec } = useNRecipesContext();
@@ -201,36 +212,38 @@ export default function SearchFilter() {
             </fieldset>
           </form>
         </div>
-        <FormControl>
-          <RadioGroup
-            row
-            aria-labelledby="demo-row-radio-buttons-group-label"
-            name="row-radio-buttons-group"
-          >
-            <FormControlLabel
-              onClick={handleShow3}
-              value="3"
-              control={<Radio />}
-              label="Show 3"
-              labelPlacement="top"
-            />
-            <FormControlLabel
-              onClick={handleShow5}
-              value="5"
-              control={<Radio />}
-              label="Show 5"
-              labelPlacement="top"
-            />
-            <FormControlLabel
-              onClick={handleShow10}
-              color="#B6D0CC"
-              value="10"
-              control={<Radio />}
-              label="Show 10"
-              labelPlacement="top"
-            />
-          </RadioGroup>
-        </FormControl>
+        <ThemeProvider theme={theme}>
+          <FormControl>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+            >
+              <FormControlLabel
+                onClick={handleShow3}
+                value="3"
+                control={<Radio color="custom" />}
+                label="Show 3"
+                labelPlacement="top"
+              />
+              <FormControlLabel
+                onClick={handleShow5}
+                value="5"
+                control={<Radio />}
+                label="Show 5"
+                labelPlacement="top"
+              />
+              <FormControlLabel
+                onClick={handleShow10}
+                color="#B6D0CC"
+                value="10"
+                control={<Radio />}
+                label="Show 10"
+                labelPlacement="top"
+              />
+            </RadioGroup>
+          </FormControl>
+        </ThemeProvider>
       </div>
     </div>
   );
