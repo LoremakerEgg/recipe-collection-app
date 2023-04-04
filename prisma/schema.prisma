@@ -7,29 +7,31 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("postgresql://postgres:IHEUEX4pMBsFnyd9@db.ptqgqeiujpwbziabrzux.supabase.co:5432/postgres")
+  url      = env("DATABASE_URL")
 }
 
 model AllRecipes {
-  id  Int   @id @unique
-  recipeTitle String 
-  recipeImageURL String
-  cookingTime Int
-  servings Int
-  randomId Int @default(autoincrement())
+  id                  Int                   @id @unique
+  recipeTitle         String
+  recipeImageURL      String
+  cookingTime         Int
+  servings            Int
+  randomId            Int                   @default(autoincrement())
+  CookingInstructions CookingInstructions[]
+  Ingredients         Ingredients[]
 }
 
-model CookingInstructions{
-  instructionId Int @id @unique
-  instructions String
-  recipe AllRecipes @relation(fields: [recipeId], references: [id])
-  recipeId  Int
+model CookingInstructions {
+  instructionId Int        @id @unique
+  instructions  String
+  recipe        AllRecipes @relation(fields: [recipeId], references: [id])
+  recipeId      Int
 }
 
-model Ingredients{
-  ingredientId Int @id @unique
-  recipe AllRecipes @relations(fields: [recipeId], references: [id])
-  recipeId  Int
-  ingredient string
-  amount string
+model Ingredients {
+  ingredientId Int        @id @unique
+  recipe       AllRecipes @relation(fields: [recipeId], references: [id])
+  recipeId     Int
+  ingredient   String
+  amount       String
 }
