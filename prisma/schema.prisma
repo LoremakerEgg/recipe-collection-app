@@ -11,22 +11,25 @@ datasource db {
 }
 
 model AllRecipes {
-  recipeId  Int   @id @unique
+  id  Int   @id @unique
   recipeTitle String 
   recipeImageURL String
   cookingTime Int
   servings Int
   randomId Int @default(autoincrement())
-  instructionId Int
 }
 
 model CookingInstructions{
-  id Int @id @unique
+  instructionId Int @id @unique
   instructions String
-  instruction CookingInstructions @relation(fields: [instructionId], references: [id])
+  recipe AllRecipes @relation(fields: [recipeId], references: [id])
+  recipeId  Int
 }
 
 model Ingredients{
   ingredientId Int @id @unique
-  recipeId AllRecipes @relations(fields:[recipeId], references:)
+  recipe AllRecipes @relations(fields: [recipeId], references: [id])
+  recipeId  Int
+  ingredient string
+  amount string
 }
