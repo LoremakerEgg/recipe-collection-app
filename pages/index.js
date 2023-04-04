@@ -17,7 +17,7 @@ export default function Home() {
     setRenderRecipes(false);
   }, []);
 
-  console.log(renderRecipes);
+  //console.log(renderRecipes);
   if (!renderRecipes)
     return (
       <>
