@@ -28,8 +28,6 @@ Create SQL fetch path for ID, (include, 30 mins or less) so that each card is cl
 
 Create EXCLUDE functionality with SQL
 
-DATABASE PASSWORD: IHEUEX4pMBsFnyd9
-
 npx prisma format
-npx prisma migrate dev
+npx prisma migrate reset (npx prisma migrate dev)
 npx prisma studio
