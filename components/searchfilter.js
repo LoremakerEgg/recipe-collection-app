@@ -13,8 +13,8 @@ import { useResultContext } from "@/context/resultArray";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
-  "https://app.supabase.com/project/ptqgqeiujpwbziabrzux",
-  "public-anon-key"
+  "https://ptqgqeiujpwbziabrzux.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB0cWdxZWl1anB3YnppYWJyenV4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODA1OTcxMDgsImV4cCI6MTk5NjE3MzEwOH0.sBdnhRhs7YwH5ayNz5M6ifoLiI4ZLANbLVNQ4zqSl6U"
 );
 
 export default function SearchFilter() {
