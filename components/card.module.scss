@@ -2,18 +2,19 @@
 
 .card {
   display: flex;
-  background-color: $secondaryColor;
+  background-color: $otherDetailColor;
   border-radius: 1rem;
   justify-content: space-evenly;
   align-items: center;
   width: 455px;
-  height: 362px;
+  height: 320px;
   text-align: center;
   padding: 10px;
   .cardImage {
-    height: 260px;
-    width: 260px;
+    height: 230px;
+    width: 230px;
     border-radius: 1rem;
+    object-fit: cover;
   }
   .innerCard {
     display: flex;
@@ -32,7 +33,7 @@
     margin-bottom: 2px;
     &:hover {
       cursor: pointer;
-      background-color: $navDetailColor;
+      background-color: $otherDetailColor;
     }
   }
   &:hover {
@@ -43,18 +44,21 @@
 @media only screen and (max-width: 700px) {
   .card {
     width: 300px;
-    height: 300px;
+    height: 200px;
+    align-items: flex-start; /* Align items to the start of the row */
     .cardImage {
-      height: 200px;
-      width: 200px;
+      margin-top: 25px;
+      height: 150px;
+      width: 150px;
     }
     .innerCard {
       p {
         font-size: 15px;
+        margin-bottom: 5%; /* Add margin bottom instead of margin top */
       }
     }
     .cardButton {
-      padding: 12px;
+      padding: 8px;
     }
   }
 }

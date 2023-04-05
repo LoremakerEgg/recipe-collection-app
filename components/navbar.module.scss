@@ -2,8 +2,9 @@
 
 .navbar {
   display: flex;
-  padding: 1rem;
-  justify-content: space-around;
+  padding-left: 2rem;
+  justify-content: left;
+  gap: 130px;
   border-bottom-right-radius: 60px;
   color: white;
   background-color: $secondaryColor;

@@ -106,7 +106,9 @@ export default function SearchFilter() {
 
   return (
     <div className={styles.mainContainer}>
-      <h1 className={styles.headerLarge}>Find Recipes</h1>
+      <h1 className={styles.headerLarge}>
+        Unleash Your Inner Chef and Explore New Flavors!
+      </h1>
       <div className={styles.choiceWrapper}>
         <h2 className={styles.headerMedium}>Show me:</h2>
         <div className={styles.filterContainer}>

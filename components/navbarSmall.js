@@ -52,8 +52,8 @@ const NavbarSmall = () => {
           className={styles.hamburgerMenu}
           src="/HamburgerMenu.svg"
           alt="hamburger menu"
-          width="69px"
-          height="69px"
+          width="59.5px"
+          height="59.5px"
           onClick={handleonClick}
         />
       </header>
