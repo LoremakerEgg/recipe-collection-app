@@ -10,23 +10,36 @@ import { useNRecipesContext } from "@/context/showNRecipes";
 import { useIngredientContext } from "@/context/ingredient";
 import { useResultContext } from "@/context/resultArray";
 
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  "https://app.supabase.com/project/ptqgqeiujpwbziabrzux",
+  "public-anon-key"
+);
+
 export default function SearchFilter() {
   const { resultArray, setResultArray } = useResultContext();
   const { showNRec, setShowNRec } = useNRecipesContext();
   const { ingredient, setIngredient } = useIngredientContext();
 
-  const fetchRecipeRandom = () => {
-    fetch("http://localhost:3000/api/fetchrandom")
-      .then((res) => res.json())
-      .then((data) => {
-        setResultArray(data.recipes[0]);
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        console.log("Local fetch completed.");
-      });
+  const fetchRecipeRandom = async () => {
+    // fetch("http://localhost:3000/api/fetchrandom")
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setResultArray(data.recipes[0]);
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   })
+    //   .finally(() => {
+    //     console.log("Local fetch completed.");
+    //   });
+    const randomNumber = Math.floor(Math.random() * 9) + 1;
+    const { data, error } = await supabase
+      .from("AllRecipes")
+      .select()
+      .eq({ randomNumber }, "recipeId");
+    setResultArray(data);
   };
 
   const fetchRecipeTime = () => {
@@ -41,6 +54,8 @@ export default function SearchFilter() {
       .finally(() => {
         console.log("Local fetch completed.");
       });
+
+    //const {data, error} = await supabase.from("AllRecipes").select().lte("cookingTime", 30)
   };
 
   const fetchRecipeInclude = () => {
@@ -55,6 +70,7 @@ export default function SearchFilter() {
       .finally(() => {
         console.log("Local fetch completed.");
       });
+    //const {data, error} = await supabase.from("AllRecipes").select().eq("Ingredients.ingredient", {ingredient}) //need testing
   };
 
   const handleRandomClick = (e) => {
