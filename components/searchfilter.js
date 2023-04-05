@@ -212,14 +212,14 @@ export default function SearchFilter() {
             <FormControlLabel
               onClick={handleShow3}
               value="3"
-              control={<Radio />}
+              control={<Radio style={{ color: "rgb(121, 205, 55)" }} />}
               label="Show 3"
               labelPlacement="top"
             />
             <FormControlLabel
               onClick={handleShow5}
               value="5"
-              control={<Radio />}
+              control={<Radio style={{ color: "rgb(121, 205, 55)" }} />}
               label="Show 5"
               labelPlacement="top"
             />
@@ -227,7 +227,7 @@ export default function SearchFilter() {
               onClick={handleShow10}
               color="#B6D0CC"
               value="10"
-              control={<Radio />}
+              control={<Radio style={{ color: "rgb(121, 205, 55)" }} />}
               label="Show 10"
               labelPlacement="top"
             />

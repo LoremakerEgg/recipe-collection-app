@@ -29,7 +29,7 @@ const Navbar = () => {
     return targetReached;
   };
 
-  const isBreakpoint = useMediaQuery(768);
+  const isBreakpoint = useMediaQuery(850);
 
   return <>{isBreakpoint ? <NavbarSmall /> : <NavbarLarge />}</>;
 };

@@ -52,9 +52,16 @@ const NavbarSmall = () => {
           className={styles.hamburgerMenu}
           src="/HamburgerMenu.svg"
           alt="hamburger menu"
+          width="69px"
+          height="69px"
+          onClick={handleonClick}
+        />
+        <img
+          className={styles.gurka}
+          src="/gurka1.svg"
+          alt="cucumber logo"
           width="59.5px"
           height="59.5px"
-          onClick={handleonClick}
         />
       </header>
       <div

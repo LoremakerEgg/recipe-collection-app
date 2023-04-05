@@ -42,6 +42,13 @@ const NavbarLarge = () => {
         >
           <h2>About Us</h2>
         </a>
+        <img
+          className={styles.gurka}
+          src="/gurka1.svg"
+          alt="cucumber logo"
+          width="59.5px"
+          height="59.5px"
+        />
       </header>
     </>
   );

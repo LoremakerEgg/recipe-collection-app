@@ -1,13 +1,31 @@
 @import "styles/variables";
 
 .navbar {
+  position: relative;
   display: flex;
   padding-left: 2rem;
   justify-content: left;
-  gap: 130px;
+  gap: 100px;
   border-bottom-right-radius: 60px;
   color: white;
   background-color: $secondaryColor;
+  .gurka {
+    position: absolute;
+    top: 4px;
+    right: 30px;
+    &:hover {
+      animation: rotate-infinite 10s linear infinite;
+    }
+  }
+
+  @keyframes rotate-infinite {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 .link {
@@ -21,7 +39,7 @@
 }
 .linkActive {
   transform: scale(1.2);
-  color: $navDetailColor;
+  color: white;
   pointer-events: none;
 }
 
@@ -40,10 +58,12 @@
   padding: 1rem;
   color: white;
   background-color: $secondaryColor;
+  border-bottom-right-radius: 60px;
+  z-index: 1;
 }
 
-@media screen and (max-width: 768px) {
-  .navbar {
-    justify-content: left;
-  }
-}
+// @media screen and (max-width: 768px) {
+//   .navbar {
+//     justify-content: left;
+//   }
+// }
