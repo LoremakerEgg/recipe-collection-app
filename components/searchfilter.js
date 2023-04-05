@@ -35,11 +35,11 @@ export default function SearchFilter() {
     //     console.log("Local fetch completed.");
     //   });
     const randomNumber = Math.floor(Math.random() * 9) + 1;
-    const { data, error } = await supabase
+    const { data: AllRecipes, error } = await supabase
       .from("AllRecipes")
-      .select()
-      .eq({ randomNumber }, "randomId");
-    setResultArray(data);
+      .select();
+    console.log(AllRecipes);
+    console.log(error);
   };
 
   const fetchRecipeTime = () => {
