@@ -68,11 +68,11 @@ export default function SearchFilter() {
   };
 
   const handleShow5 = () => {
-    setShowNRec(5);
+    setShowNRec(6);
   };
 
   const handleShow10 = () => {
-    setShowNRec(10);
+    setShowNRec(9);
   };
 
   const handleInclude = (e) => {
