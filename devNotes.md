@@ -33,3 +33,13 @@ DATABASE PASSWORD: IHEUEX4pMBsFnyd9
 npx prisma format
 npx prisma migrate dev
 npx prisma studio
+
+SUPABASE FETCH
+
+const {data, error} = await supabase
+.from("TABLE")
+.select("XYZ")
+
+https://supabase.com/docs/reference/javascript/select
+
+npm install @supabase/supabase-js
