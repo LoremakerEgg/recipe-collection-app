@@ -38,7 +38,7 @@ export default function SearchFilter() {
     const { data, error } = await supabase
       .from("AllRecipes")
       .select()
-      .eq({ randomNumber }, "recipeId");
+      .eq({ randomNumber }, "randomId");
     setResultArray(data);
   };
 
