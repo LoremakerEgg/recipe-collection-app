@@ -111,7 +111,9 @@ export default function SearchFilter() {
 
   return (
     <div className={styles.mainContainer}>
-      <h1 className={styles.headerLarge}>Find Recipes</h1>
+      <h1 className={styles.headerLarge}>
+        Unleash Your Inner Chef and Explore New Flavors!
+      </h1>
       <div className={styles.choiceWrapper}>
         <h2 className={styles.headerMedium}>Show me:</h2>
         <div className={styles.filterContainer}>
@@ -215,7 +217,7 @@ export default function SearchFilter() {
             <FormControlLabel
               onClick={handleShow3}
               value="3"
-              control={<Radio />}
+              control={<Radio style={{ color: "rgb(121, 205, 55)" }} />}
               label="Show 3"
               labelPlacement="top"
               checked
@@ -223,15 +225,14 @@ export default function SearchFilter() {
             <FormControlLabel
               onClick={handleShow6}
               value="6"
-              control={<Radio />}
+              control={<Radio style={{ color: "rgb(121, 205, 55)" }} />}
               label="Show 6"
               labelPlacement="top"
             />
             <FormControlLabel
               onClick={handleShow9}
-              color="#B6D0CC"
               value="9"
-              control={<Radio />}
+              control={<Radio style={{ color: "rgb(121, 205, 55)" }} />}
               label="Show 9"
               labelPlacement="top"
             />
