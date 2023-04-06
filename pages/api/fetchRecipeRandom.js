@@ -9,6 +9,6 @@ export default async function handler(req, res) {
     res.status(200).json(all);
   } catch (err) {
     console.log(err);
-    res.status(500).json("Something wnet weriong");
+    res.status(500).json("Something went wrong");
   }
 }

@@ -1,23 +1,13 @@
-const options = {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json",
-  },
-};
+const { PrismaClient } = require("@prisma/client");
 
-export default function handler(req, res) {
-  fetch(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=38b44260bc3b4308a48fd29112faaaae&includeIngredients=${req.query.ingredient}`,
-    options
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      res.status(200).send(data);
-    })
-    .catch((err) => {
-      console.error(err);
-    })
-    .finally(() => {
-      console.log("Remote fetch completed.");
-    });
+const prisma = new PrismaClient();
+
+export default async function handler(req, res) {
+  try {
+    const all = await prisma.AllRecipes.findMany({});
+    res.status(200).json(all);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json("Something went wrong");
+  }
 }

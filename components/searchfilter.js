@@ -5,17 +5,11 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { useState } from "react";
 
 import { useNRecipesContext } from "@/context/showNRecipes";
 import { useIngredientContext } from "@/context/ingredient";
 import { useResultContext } from "@/context/resultArray";
-
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  "https://ptqgqeiujpwbziabrzux.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB0cWdxZWl1anB3YnppYWJyenV4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODA1OTcxMDgsImV4cCI6MTk5NjE3MzEwOH0.sBdnhRhs7YwH5ayNz5M6ifoLiI4ZLANbLVNQ4zqSl6U"
-);
 
 export default function SearchFilter() {
   const { resultArray, setResultArray } = useResultContext();
@@ -23,10 +17,13 @@ export default function SearchFilter() {
   const { ingredient, setIngredient } = useIngredientContext();
 
   const fetchRecipeRandom = async () => {
-    fetch("http://localhost:3002/api/fetchReciepeRandom")
+    const randomNumber = Math.floor(Math.random() * 20) + 1;
+    fetch(`http://localhost:3000/api/fetchRecipeRandom`)
       .then((res) => res.json())
       .then((data) => {
-        setResultArray(data.recipes[0]);
+        const tempArray = [];
+        tempArray.push(data[randomNumber]);
+        setResultArray(tempArray);
       })
       .catch((err) => {
         console.error(err);
@@ -34,17 +31,6 @@ export default function SearchFilter() {
       .finally(() => {
         console.log("Local fetch completed.");
       });
-    // const randomNumber = Math.floor(Math.random() * 9) + 1;
-    // // const { data: AllRecipes, error } = await supabase
-    // //   .from("AllRecipes")
-    // //   .select();
-    // try {
-    //   const all = await prisma.AllRecipes.findMany({});
-    // } catch (err) {
-    //   console.log(err);
-    // }
-    // console.log(all);
-    // console.log(error);
   };
 
   const fetchRecipeTime = () => {
@@ -59,8 +45,6 @@ export default function SearchFilter() {
       .finally(() => {
         console.log("Local fetch completed.");
       });
-
-    //const {data, error} = await supabase.from("AllRecipes").select().lte("cookingTime", 30)
   };
 
   const fetchRecipeInclude = () => {
@@ -80,7 +64,7 @@ export default function SearchFilter() {
 
   const handleRandomClick = (e) => {
     e.preventDefault();
-    console.log(resultArray);
+    setShowNRec(1);
     fetchRecipeRandom();
   };
 
@@ -234,6 +218,7 @@ export default function SearchFilter() {
               control={<Radio />}
               label="Show 3"
               labelPlacement="top"
+              checked
             />
             <FormControlLabel
               onClick={handleShow6}
