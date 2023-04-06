@@ -129,15 +129,16 @@
       &::before {
         transform: translateY(-70px) translateX(-5px);
         font-size: 12rem;
-}
-    .inclusionField {
-      padding-left: 0px !important;
-      padding-right: 0px !important;
-      .ingredientContainer {
-        padding-left: 0px !important;
       }
-      .legend {
-        margin-left: 79px;
+      .inclusionField {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        .ingredientContainer {
+          padding-left: 0px !important;
+        }
+        .legend {
+          margin-left: 79px;
+        }
       }
     }
   }
