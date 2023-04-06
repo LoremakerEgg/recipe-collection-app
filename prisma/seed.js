@@ -1,17 +1,17 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-const resultArray = [];
 const recipeIdFetchArray = [];
 let idString = "";
+const resultArray = [];
 
 const fetchIds = async () => {
   try {
     const resJson = await fetch("http://localhost:3000/api/fetchIds");
     const data = await resJson.json();
     recipeIdFetchArray.push(data);
-    console.log("recipeIdFetchArray", recipeIdFetchArray);
-    console.log(recipeIdFetchArray[0]);
+    // console.log("recipeIdFetchArray", recipeIdFetchArray);
+    // console.log(recipeIdFetchArray[0]);
   } catch (err) {
     console.log("Remote fetch error", err);
   }
@@ -24,15 +24,14 @@ const fetchAll = async () => {
     );
     const data = await resJson.json();
     resultArray.push(data);
-    console.log(data);
-    console.log("1", resultArray);
+    // console.log(data);
+    // console.log("1", resultArray);
   } catch (err) {
     console.log("Remote fetch error", err);
   }
 };
 
 async function getQueryIds() {
-  //   const { resultArray, setResultArray } = useResultContext();
   await fetchIds();
 
   const idArray = recipeIdFetchArray[0].results.map((item) => {
@@ -40,31 +39,20 @@ async function getQueryIds() {
   });
   idString = idArray.toString();
 
-  //   console.log(idString);
-  console.log("get result done!");
+  console.log(idString);
+  //   console.log("get result done!");
 }
 
 async function getResultArray() {
   await getQueryIds();
-  console.log(idString);
+  //   console.log(idString);
   await fetchAll();
-  console.log("2", resultArray[0][0]);
+  //   console.log("2", resultArray[0][0]);
 }
 
 async function main() {
   await getResultArray();
 
-  //   console.log(resultArray);
-  // const test = resultArray[0].map((element) => {
-  //   return {
-  //     id: element.id,
-  //     recipeTitle: element.title,
-  //     recipeImageURL: element.image,
-  //     cookingTime: element.readyInMinutes,
-  //     servings: element.servings,
-  //     instructions: element.instructions,
-  //   };
-  // });
   // const id = resultArray[0][0].id;
   // const title = resultArray[0][0].title;
   // const image = resultArray[0][0].image;
@@ -85,6 +73,41 @@ async function main() {
         servings: element.servings,
         CookingInstructions: { create: { instructions: element.instructions } },
       },
+    });
+  });
+
+  resultArray[0].forEach(async (element) => {
+    element.extendedIngredients.forEach(async (el) => {
+      if (typeof el.measures.metric.amount == "string") {
+        await prisma.Ingredients.create({
+          data: {
+            ingredientId: el.id,
+            ingredient: el.originalName,
+            amountText: el.measures.metric.amount,
+            recipe: { connect: { id: element.id } },
+          },
+        });
+      } else if (typeof el.measures.metric.amount == "number") {
+        if (Number.isInteger(el.measures.metric.amount)) {
+          await prisma.Ingredients.create({
+            data: {
+              ingredientId: el.id,
+              ingredient: el.originalName,
+              amountInt: el.measures.metric.amount,
+              recipe: { connect: { id: element.id } },
+            },
+          });
+        } else {
+          await prisma.Ingredients.create({
+            data: {
+              ingredientId: el.id,
+              ingredient: el.originalName,
+              amountFloat: el.measures.metric.amount,
+              recipe: { connect: { id: element.id } },
+            },
+          });
+        }
+      }
     });
   });
 
@@ -172,19 +195,19 @@ async function main() {
   //       // recipeTitle: title,
   //       // recipeImageURL: image,
   //       // cookingTime: cookTime,
-  //       // servings: servings,
-  //       // CookingInstructions: {
-  //       //   create: {
-  //       //     instructions: instructions,
-  //       //   },
-  //       // },
-  //       // Ingredients: {
-  //       //     create: {
-  //       //         ingredientId: ingredientId,
-  //       //         ingredient: ingredient,
-  //       //         amount: amount,
-  //       //     }
-  //       // },
+  // servings: servings,
+  // CookingInstructions: {
+  //   create: {
+  //     instructions: instructions,
+  //   },
+  // },
+  // Ingredients: {
+  //     create: {
+  //         ingredientId: ingredientId,
+  //         ingredient: ingredient,
+  //         amount: amount,
+  //     }
+  // },
   //     }
   //     // }
   //   );
@@ -213,6 +236,7 @@ async function main() {
   //   //   });
   //   console.log({ firstRecipe });
 }
+
 main()
   .then(async () => {
     await prisma.$disconnect();
