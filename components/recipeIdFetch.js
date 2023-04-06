@@ -4,12 +4,6 @@ const recipeIdFetchArray = [];
 const resultArray = [];
 let idString = "";
 
-// const fetchRecipeRandom = async () => {
-//   const resJson = await fetch("http://localhost:3000/api/fetchrandom");
-//   const data = await resJson.json();
-//   resultArray.push(data.recipes[0]);
-// };
-
 const fetchIds = async () => {
   try {
     const resJson = await fetch("http://localhost:3000/api/fetchIds");

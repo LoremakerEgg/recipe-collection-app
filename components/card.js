@@ -3,8 +3,10 @@ import { useResultContext } from "@/context/resultArray";
 import { useShowFullRecipeContext } from "@/context/showFullRecipe";
 import { useShowRecipeContext } from "@/context/showRecipe";
 import { useInstructionContext } from "@/context/showInstructions";
+import { useRecipeIngredientContext } from "@/context/recipeIngredient";
 
 export default function Card(props) {
+  const { setRecipeIngredients } = useRecipeIngredientContext();
   const { setShowFullRecipe } = useShowFullRecipeContext();
   const { resultArray } = useResultContext();
   const { setShowRecipe } = useShowRecipeContext();
@@ -24,6 +26,20 @@ export default function Card(props) {
       });
   };
 
+  const fetchIngredients = async () => {
+    await fetch(`http://localhost:3000/api/fetchIngredients`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRecipeIngredients(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        console.log("Local fetch completed.");
+      });
+  };
+
   const handleGroupClick = () => {
     console.log("'Add Group' button has been clicked");
   };
@@ -34,6 +50,7 @@ export default function Card(props) {
 
   const handleCardClick = async (event) => {
     await fetchInstructions();
+    await fetchIngredients();
     if (event.target.name != "addGroup") {
       setShowFullRecipe(true);
       setShowRecipe(event.target.id);

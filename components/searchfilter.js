@@ -10,12 +10,22 @@ import { useNRecipesContext } from "@/context/showNRecipes";
 import { useIngredientContext } from "@/context/ingredient";
 import { useResultContext } from "@/context/resultArray";
 import { useIncludeContext } from "@/context/include";
+import { useAllRecipeContext } from "@/context/allRecipesArray";
 
 export default function SearchFilter() {
+  const { allRecipes, setAllRecipes } = useAllRecipeContext();
   const { resultArray, setResultArray } = useResultContext();
   const { showNRec, setShowNRec } = useNRecipesContext();
   const { ingredient, setIngredient } = useIngredientContext();
   const { include, setInclude } = useIncludeContext();
+
+  const fetchAllRecipes = async () => {
+    fetch(`http://localhost:3000/api/fetchAllRecipes`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAllRecipes(data);
+      });
+  };
 
   const fetchRecipeRandom = async () => {
     const randomNumber = Math.floor(Math.random() * 20) + 1;
@@ -48,19 +58,20 @@ export default function SearchFilter() {
       });
   };
 
-  const fetchRecipeInclude = () => {
-    fetch(`http://localhost:3000/api/fetchIngredients`)
+  const fetchRecipeInclude = async () => {
+    await fetch(`http://localhost:3000/api/fetchIngredients`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         const ingArray = data.filter((ing) => {
           return ing.ingredientId == ingredient;
         });
         const tempArray = ingArray.map((item) => {
           return item.recipeId;
         });
-        console.log(tempArray);
-        setResultArray(tempArray);
+        const filter = allRecipes.filter((element) => {
+          return tempArray.includes(element.id);
+        });
+        setResultArray(filter);
       })
       .catch((err) => {
         console.error(err);
@@ -90,10 +101,9 @@ export default function SearchFilter() {
 
   const handleInclude = (e) => {
     e.preventDefault();
+    fetchAllRecipes();
     setInclude(1);
     fetchRecipeInclude();
-    // console.log(resultArray);
-
   };
 
   // const handleExclude = (e) => {
@@ -103,7 +113,6 @@ export default function SearchFilter() {
 
   const handleIngredient = (e) => {
     setIngredient(e.target.value);
-    console.log(ingredient);
   };
 
   const handleIngredientReset = (e) => {
@@ -115,7 +124,6 @@ export default function SearchFilter() {
   const handleQuickSubmit = (e) => {
     e.preventDefault();
     fetchRecipeTime();
-    console.log(resultArray);
   };
 
   return (
@@ -229,7 +237,6 @@ export default function SearchFilter() {
               control={<Radio style={{ color: "rgb(121, 205, 55)" }} />}
               label="Show 3"
               labelPlacement="top"
-              checked
             />
             <FormControlLabel
               onClick={handleShow6}

@@ -3,12 +3,14 @@ import { useResultContext } from "@/context/resultArray";
 import { useShowFullRecipeContext } from "@/context/showFullRecipe";
 import { useShowRecipeContext } from "@/context/showRecipe";
 import { useInstructionContext } from "@/context/showInstructions";
+import { useRecipeIngredientContext } from "@/context/recipeIngredient";
 
 export default function Recipe() {
   const { showFullRecipe, setShowFullRecipe } = useShowFullRecipeContext();
   const { resultArray } = useResultContext();
   const { showRecipe, setShowRecipe } = useShowRecipeContext();
   const { instructions } = useInstructionContext();
+  const { recipeIngredients } = useRecipeIngredientContext();
 
   const specificCard = resultArray.filter((element) => {
     return element.id == showRecipe;
@@ -18,15 +20,15 @@ export default function Recipe() {
     return element.recipeId == showRecipe;
   });
 
+  const specificIngredients = recipeIngredients.filter((element) => {
+    return element.recipeId == showRecipe;
+  });
+
   const handleGroupClick = () => {
     console.log("'Add Group' button has been clicked");
-    console.log(resultArray);
-    console.log(instructions);
-    console.log(showRecipe);
   };
   const handleShoppingClick = () => {
     console.log("'Shopping List' button has been clicked");
-    console.log(resultArray);
   };
   const handleResultsClick = () => {
     setShowFullRecipe(false);
@@ -67,7 +69,14 @@ export default function Recipe() {
       </div>
       <div className={styles.ingredientsDiv}>
         <h3>Ingredients: </h3>
-        <ul>TBA</ul>
+        <ul>
+          {specificIngredients.map((element, id) => (
+            <li key={id}>
+              {element.amountString}
+              {element.amountInt} {element.ingredient}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

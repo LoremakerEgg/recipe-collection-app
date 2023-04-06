@@ -10,8 +10,6 @@ const fetchAll = async () => {
     );
     const data = await resJson.json();
     resultArray.push(data);
-    // console.log(data);
-    // console.log("1", resultArray);
   } catch (err) {
     console.log("Remote fetch error", err);
   }
