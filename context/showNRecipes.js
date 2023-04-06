@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 const NRecipesContext = createContext();
 
 export function NRecipesWrapper({ children }) {
-  const [showNRec, setShowNRec] = useState(0);
+  const [showNRec, setShowNRec] = useState(3);
 
   return (
     <NRecipesContext.Provider value={{ showNRec, setShowNRec }}>

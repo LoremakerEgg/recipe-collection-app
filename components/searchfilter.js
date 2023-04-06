@@ -5,7 +5,6 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-import { useState } from "react";
 
 import { useNRecipesContext } from "@/context/showNRecipes";
 import { useIngredientContext } from "@/context/ingredient";
@@ -59,7 +58,6 @@ export default function SearchFilter() {
       .finally(() => {
         console.log("Local fetch completed.");
       });
-    //const {data, error} = await supabase.from("AllRecipes").select().eq("Ingredients.ingredient", {ingredient}) //need testing
   };
 
   const handleRandomClick = (e) => {
@@ -83,8 +81,6 @@ export default function SearchFilter() {
   const handleInclude = (e) => {
     e.preventDefault();
     fetchRecipeInclude();
-    // setInclude(1)
-    // console.log(resultArray);
   };
 
   // const handleExclude = (e) => {

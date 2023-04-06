@@ -1,50 +1,47 @@
-import { createContext, useContext } from "react";
 import styles from "./card.module.scss";
 import { useResultContext } from "@/context/resultArray";
 import { useShowFullRecipeContext } from "@/context/showFullRecipe";
+import { useShowRecipeContext } from "@/context/showRecipe";
+import { useInstructionContext } from "@/context/showInstructions";
 
 export default function Card(props) {
   const { setShowFullRecipe } = useShowFullRecipeContext();
   const { resultArray } = useResultContext();
+  const { setShowRecipe } = useShowRecipeContext();
+  const { setInstructions } = useInstructionContext();
+
+  const fetchInstructions = async () => {
+    await fetch(`http://localhost:3000/api/fetchInstructions`)
+      .then((res) => res.json())
+      .then((data) => {
+        setInstructions(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        console.log("Local fetch completed.");
+      });
+  };
+
   const handleGroupClick = () => {
     console.log("'Add Group' button has been clicked");
   };
+
   const handleShoppingClick = () => {
     console.log("'Shopping List' button has been clicked");
   };
-  const handleCardClick = (event) => {
+
+  const handleCardClick = async (event) => {
+    await fetchInstructions();
     if (event.target.name != "addGroup") {
       setShowFullRecipe(true);
+      setShowRecipe(event.target.id);
     }
   };
 
-  // If (!resultArray) {
-  //     return (
-  //     <div className={styles.card} onClick={handleCardClick}>
-  //         <img className={styles.cardImage} src= "./public/eggs-benedict-burger.jpg" alt="Food" />
-  //         <div className={styles.innerCard}>
-  //         <p>BURGER</p>
-  //         <p>1 h</p>
-  //         <button
-  //             className={styles.cardButton}
-  //             onClick={handleGroupClick}
-  //             name="addGroup"
-  //         >
-  //             Add to Group
-  //         </button>
-  //         <button
-  //             className={styles.cardButton}
-  //             onClick={handleShoppingClick}
-  //             name="addGroup"
-  //         >
-  //             Shopping List
-  //         </button>
-  //         </div>
-  //     </div>
-  //     )
-  // } else {
   return (
-    <div className={styles.card} onClick={handleCardClick}>
+    <div className={styles.card} onClick={handleCardClick} id={props.id}>
       <img
         className={styles.cardImage}
         src={props.image ? props.image : "/eggs-benedict-burger.jpg"}
