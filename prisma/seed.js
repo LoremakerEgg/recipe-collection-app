@@ -63,18 +63,26 @@ async function main() {
   //   const ingredient = resultArray[1].extendedIngredients[].originalName;
   //   const amount = resultArray[1].extendedIngredients[].measures.metric.amount;
 
-  resultArray[0].forEach(async (element) => {
-    await prisma.AllRecipes.create({
-      data: {
-        id: element.id,
-        recipeTitle: element.title,
-        recipeImageURL: element.image,
-        cookingTime: element.readyInMinutes,
-        servings: element.servings,
-        CookingInstructions: { create: { instructions: element.instructions } },
-      },
+  const all = async () => {
+    await resultArray[0].forEach(async (element) => {
+      await prisma.AllRecipes.create({
+        data: {
+          id: element.id,
+          recipeTitle: element.title,
+          recipeImageURL: element.image,
+          cookingTime: element.readyInMinutes,
+          servings: element.servings,
+          CookingInstructions: {
+            create: { instructions: element.instructions },
+          },
+        },
+      });
     });
-  });
+  };
+  await all();
+
+  // Need for some reason?!?!?!?!?!?!?!?!?
+  const test = await prisma.AllRecipes.findMany({});
 
   resultArray[0].forEach(async (element) => {
     element.extendedIngredients.forEach(async (el) => {
