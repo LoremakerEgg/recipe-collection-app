@@ -7,7 +7,7 @@ const options = {
 
 export default function handler(req, res) {
   fetch(
-    `https://api.spoonacular.com/recipes/informationBulk?apiKey=2a9a049c66f94c59812cc5d2bc81b1f1&ids=${req.query.ids}`,
+    `https://api.spoonacular.com/recipes/informationBulk?apiKey=38b44260bc3b4308a48fd29112faaaae&ids=${req.query.ids}`,
     options
   )
     .then((res) => res.json())

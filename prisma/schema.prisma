@@ -29,9 +29,12 @@ model CookingInstructions {
 }
 
 model Ingredients {
-  ingredientId Int         @id 
+  idPrim  Int @id @unique @default(autoincrement())
+  ingredientId Int? 
   recipe       AllRecipes @relation(fields: [recipeId], references: [id])
   recipeId     Int 
-  ingredient   String 
-  amount       String 
+  ingredient   String? 
+  amountText       String? 
+  amountFloat   Float?
+  amountInt Int?
 }
