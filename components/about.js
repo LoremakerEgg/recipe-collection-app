@@ -49,7 +49,7 @@ export default function About() {
         <h2 className={styling.name}>EMMA LINDAHL</h2>
         <img src="emma2.jpg" />
         <p className={styling.textsection}>
-          Emma is an experienced animator with a keen interest in dynamic CSS
+          Emma is an experienced 2D-animator with a keen interest in dynamic CSS
           and micro animations. She brings a creative eye to web development and
           can help bring your designs to life with fluid, eye-catching
           animations.

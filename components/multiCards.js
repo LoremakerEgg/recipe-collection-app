@@ -33,7 +33,7 @@ export default function MultiCards() {
 
   return (
     <>
-      <h3 style={{ color: "#454545", marginLeft: "80px" }}>Showing results:</h3>
+      <h3 style={{ color: "#454545", marginLeft: "80px" }}>Results:</h3>
       <section className={styles.cardGrid}>{cards ? cards : <Card />}</section>
     </>
   );

@@ -3,7 +3,7 @@ import NavbarSmall from "./navbarSmall";
 import NavbarLarge from "./navbarLarge";
 
 const Navbar = () => {
-  //För att läsa av skärmstorlek och sätta isBreakpoint till true/false. (isBreakpoint -> rad. 32)
+  //To read users screensize -> set isBreakpoint to true/false. (isBreakpoint is used on row.32)
   const useMediaQuery = (width) => {
     const [targetReached, setTargetReached] = useState(false);
 

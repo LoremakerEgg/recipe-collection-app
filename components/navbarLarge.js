@@ -2,7 +2,7 @@ import styles from "./navbar.module.scss";
 import { useRouter } from "next/router";
 
 const NavbarLarge = () => {
-  //För att få aktiva Länkar.
+  //Get "active" links.
   let aboutActive = false;
   let homeActive = false;
   let myRecipesActive = false;

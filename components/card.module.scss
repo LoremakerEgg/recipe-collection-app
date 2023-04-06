@@ -8,7 +8,6 @@
   align-items: center;
   width: 455px;
   height: 320px;
-  text-align: center;
   padding: 10px;
   .cardImage {
     height: 230px;
@@ -29,7 +28,7 @@
     background-color: $buttonColor;
     border-radius: 1rem;
     border: none;
-    padding: 20px;
+    padding: 15px;
     margin-bottom: 2px;
     &:hover {
       cursor: pointer;
@@ -45,7 +44,7 @@
   .card {
     width: 300px;
     height: 200px;
-    align-items: flex-start; /* Align items to the start of the row */
+    align-items: flex-start;
     .cardImage {
       margin-top: 25px;
       height: 150px;
@@ -54,7 +53,7 @@
     .innerCard {
       p {
         font-size: 15px;
-        margin-bottom: 5%; /* Add margin bottom instead of margin top */
+        margin-bottom: 5%;
       }
     }
     .cardButton {

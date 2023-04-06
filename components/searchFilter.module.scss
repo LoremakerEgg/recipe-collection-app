@@ -13,7 +13,6 @@
   }
 }
 .fieldset {
-  height: auto;
   border: 2px solid $buttonColor;
   border-radius: 2rem;
   padding-left: 3rem;
@@ -27,7 +26,6 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  margin: none;
 
   .headerLarge {
     position: relative;
@@ -50,25 +48,19 @@
     @extend .mainContainer;
     .headerMedium {
       margin-bottom: 1px;
-      padding-bottom: 0px;
-      margin-left: 0px;
       align-self: flex-start;
+      color: $secondaryColor;
     }
 
     .filterContainer {
       display: flex;
-      justify-content: center;
       align-items: center;
       gap: 5px;
-      margin-top: none;
-      min-width: fit-content;
 
       .leftContainer {
         .randomForm {
           .randomField {
             @extend .fieldset;
-            display: flex;
-            justify-content: flex-start;
             .randomButton {
               @extend .button;
             }
@@ -92,7 +84,6 @@
             @extend .filterContainer;
             display: flex;
             flex-direction: column;
-            gap: 5px;
 
             .ingredientContainer {
               min-width: 250px;
@@ -103,13 +94,11 @@
 
               .ingredientSelect {
                 @extend .button;
-                background-color: $buttonColor;
               }
             }
             .inclusionChoice {
               display: flex;
               justify-content: space-between;
-              margin-top: none;
               min-width: 250px;
               .includeButtonWrapper {
                 .includeButton {
@@ -129,7 +118,6 @@
   }
   @media only screen and (max-width: 768px) {
     .choiceWrapper {
-      flex-direction: column;
       gap: 10px;
     }
     .filterContainer {
