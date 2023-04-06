@@ -31,3 +31,13 @@ Create EXCLUDE functionality with SQL
 npx prisma format
 npx prisma migrate reset (npx prisma migrate dev)
 npx prisma studio
+
+SUPABASE FETCH
+
+const {data, error} = await supabase
+.from("TABLE")
+.select("XYZ")
+
+https://supabase.com/docs/reference/javascript/select
+
+npm install @supabase/supabase-js

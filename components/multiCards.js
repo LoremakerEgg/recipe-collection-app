@@ -1,4 +1,4 @@
-import { useRandomContext } from "@/Archive/randomRecipe";
+import { useEffect } from "react";
 import Card from "./card";
 import styles from "./multiCards.module.scss";
 import { useResultContext } from "@/context/resultArray";
@@ -6,8 +6,7 @@ import { useNRecipesContext } from "@/context/showNRecipes";
 
 export default function MultiCards() {
   const { resultArray } = useResultContext();
-  const { randomRecipe } = useRandomContext();
-  const { showNRec } = useNRecipesContext();
+  const { showNRec, setShowNRec } = useNRecipesContext();
   let cards;
 
   // if (resultArray[0] === "recipes") {
@@ -15,20 +14,31 @@ export default function MultiCards() {
   //     <Card title={title} image={image} key={id} />
   //   ));
   // } else
-  if (resultArray.results) {
-    cards = resultArray.results
-      .slice(0, showNRec)
-      .map(({ title, image, id }) => (
-        <Card title={title} image={image} key={id} />
-      ));
-  } else if (resultArray.instructions) {
+
+  useEffect(() => {
+    setShowNRec(0);
+  }, [Card]);
+
+  if (resultArray.length === 1) {
     cards = (
       <Card
-        title={resultArray.title}
-        image={resultArray.image}
-        key={resultArray.id}
+        title={resultArray[0].recipeTitle}
+        image={resultArray[0].recipeImageURL}
+        key={resultArray[0].id}
+        time={resultArray[0].cookingTime}
       />
     );
+  } else {
+    cards = resultArray
+      .slice(0, showNRec)
+      .map(({ recipeTitle, recipeImageURL, id, cookingTime }) => (
+        <Card
+          title={recipeTitle}
+          image={recipeImageURL}
+          key={id}
+          time={cookingTime}
+        />
+      ));
   }
 
   return (
