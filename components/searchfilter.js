@@ -83,11 +83,11 @@ export default function SearchFilter() {
     setShowNRec(3);
   };
 
-  const handleShow5 = () => {
+  const handleShow6 = () => {
     setShowNRec(6);
   };
 
-  const handleShow10 = () => {
+  const handleShow9 = () => {
     setShowNRec(9);
   };
 
@@ -231,18 +231,18 @@ export default function SearchFilter() {
               labelPlacement="top"
             />
             <FormControlLabel
-              onClick={handleShow5}
-              value="5"
+              onClick={handleShow6}
+              value="6"
               control={<Radio />}
-              label="Show 5"
+              label="Show 6"
               labelPlacement="top"
             />
             <FormControlLabel
-              onClick={handleShow10}
+              onClick={handleShow9}
               color="#B6D0CC"
-              value="10"
+              value="9"
               control={<Radio />}
-              label="Show 10"
+              label="Show 9"
               labelPlacement="top"
             />
           </RadioGroup>
