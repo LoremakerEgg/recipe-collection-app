@@ -6,12 +6,12 @@ const NavbarSmall = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdown = useRef(null);
 
-  //För att toggla dropdownmenu när vi klickar på hamburger Menu.
+  //Toggla dropdownmenu when clicking hamburgerMenu.
   const handleonClick = () => {
     setDropdownVisible(!dropdownVisible);
   };
 
-  //För att stänga dropdownmenu när den är öppen & vi klickar utanför den.
+  //To close dropdownmenu when clicking outside dropdownmenu-area.
   useEffect(() => {
     if (!dropdownVisible) return;
 
@@ -30,6 +30,7 @@ const NavbarSmall = () => {
     };
   }, [dropdownVisible]);
 
+  //Get "active" links.
   let aboutActive = false;
   let homeActive = false;
   let myRecipesActive = false;
@@ -55,6 +56,13 @@ const NavbarSmall = () => {
           width="69px"
           height="69px"
           onClick={handleonClick}
+        />
+        <img
+          className={styles.gurka}
+          src="/gurka1.svg"
+          alt="cucumber logo"
+          width="59.5px"
+          height="59.5px"
         />
       </header>
       <div

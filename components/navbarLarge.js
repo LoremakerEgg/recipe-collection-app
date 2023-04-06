@@ -2,7 +2,7 @@ import styles from "./navbar.module.scss";
 import { useRouter } from "next/router";
 
 const NavbarLarge = () => {
-  //För att få aktiva Länkar.
+  //Get "active" links.
   let aboutActive = false;
   let homeActive = false;
   let myRecipesActive = false;
@@ -42,6 +42,13 @@ const NavbarLarge = () => {
         >
           <h2>About Us</h2>
         </a>
+        <img
+          className={styles.gurka}
+          src="/gurka1.svg"
+          alt="cucumber logo"
+          width="59.5px"
+          height="59.5px"
+        />
       </header>
     </>
   );

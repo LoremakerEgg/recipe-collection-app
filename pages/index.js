@@ -17,7 +17,6 @@ export default function Home() {
     setRenderRecipes(false);
   }, []);
 
-  //console.log(renderRecipes);
   if (!renderRecipes)
     return (
       <>
@@ -43,6 +42,7 @@ export default function Home() {
         <Navbar />
         <SearchFilter />
         <Recipes />
+        <br />
       </>
     );
   }

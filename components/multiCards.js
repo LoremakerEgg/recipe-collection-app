@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Card from "./card";
+import Recipe from "./recipe";
 import styles from "./multiCards.module.scss";
 import { useResultContext } from "@/context/resultArray";
 import { useNRecipesContext } from "@/context/showNRecipes";
@@ -9,14 +10,8 @@ export default function MultiCards() {
   const { showNRec, setShowNRec } = useNRecipesContext();
   let cards;
 
-  // if (resultArray[0] === "recipes") {
-  //   cards = resultArray.recipes.map(({ title, image, id }) => (
-  //     <Card title={title} image={image} key={id} />
-  //   ));
-  // } else
-
   useEffect(() => {
-    setShowNRec(0);
+    setShowNRec(3);
   }, [Card]);
 
   if (resultArray.length === 1) {
@@ -26,6 +21,7 @@ export default function MultiCards() {
         image={resultArray[0].recipeImageURL}
         key={resultArray[0].id}
         time={resultArray[0].cookingTime}
+        id={resultArray[0].id}
       />
     );
   } else {
@@ -37,13 +33,14 @@ export default function MultiCards() {
           image={recipeImageURL}
           key={id}
           time={cookingTime}
+          id={id}
         />
       ));
   }
 
   return (
     <>
-      <h3 style={{ color: "#454545", marginLeft: "80px" }}>Showing results:</h3>
+      <h3 style={{ color: "#454545", marginLeft: "80px" }}>Results:</h3>
       <section className={styles.cardGrid}>{cards ? cards : <Card />}</section>
     </>
   );

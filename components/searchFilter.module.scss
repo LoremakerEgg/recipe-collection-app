@@ -1,20 +1,18 @@
 @import "styles/variables";
 
 .button {
-  background-color: $secondaryColor;
+  background-color: $buttonColor;
   border-radius: 1rem;
   border: none;
   padding: 15px;
-  margin-bottom: 2px;
   font-size: 1rem;
 
   &:hover {
     cursor: pointer;
-    background-color: $navDetailColor;
+    background-color: $otherDetailColor;
   }
 }
 .fieldset {
-  height: auto;
   border: 2px solid $buttonColor;
   border-radius: 2rem;
   padding-left: 3rem;
@@ -26,39 +24,43 @@
 .mainContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin: none;
+  gap: 0.5rem;
 
   .headerLarge {
-    font-size: 4rem;
-    padding-bottom: none;
-    margin-bottom: 5px;
+    position: relative;
+    font-size: 2rem;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 100;
+    margin-top: 80px;
+    color: $secondaryColor;
+    &::before {
+      content: open-quote;
+      position: absolute;
+      transform: translateY(-80px) translateX(-40px);
+      font-size: 15rem;
+      font-family: "Times New Roman", Times, serif;
+      color: $otherDetailColor;
+      z-index: -1;
+    }
   }
   .choiceWrapper {
     @extend .mainContainer;
     .headerMedium {
       margin-bottom: 1px;
-      padding-bottom: 0px;
-      margin-left: 0px;
       align-self: flex-start;
+      color: $secondaryColor;
     }
 
     .filterContainer {
       display: flex;
-      justify-content: center;
       align-items: center;
       gap: 5px;
-      margin-top: none;
-      min-width: fit-content;
 
       .leftContainer {
         .randomForm {
           .randomField {
             @extend .fieldset;
-            display: flex;
-            justify-content: flex-start;
             .randomButton {
               @extend .button;
             }
@@ -83,7 +85,6 @@
             @extend .filterContainer;
             display: flex;
             flex-direction: column;
-            gap: 5px;
 
             .ingredientContainer {
               min-width: 250px;
@@ -94,13 +95,11 @@
 
               .ingredientSelect {
                 @extend .button;
-                background-color: $secondaryColor;
               }
             }
             .inclusionChoice {
               display: flex;
               justify-content: space-between;
-              margin-top: none;
               min-width: 250px;
               .includeButtonWrapper {
                 .includeButton {
@@ -120,20 +119,26 @@
   }
   @media only screen and (max-width: 768px) {
     .choiceWrapper {
-      flex-direction: column;
       gap: 10px;
     }
     .filterContainer {
       flex-direction: column;
     }
-    .inclusionField {
-      padding-left: 0px !important;
-      padding-right: 0px !important;
-      .ingredientContainer {
-        padding-left: 0px !important;
+    .headerLarge {
+      font-size: 1.1rem;
+      &::before {
+        transform: translateY(-70px) translateX(-5px);
+        font-size: 12rem;
       }
-      .legend {
-        margin-left: 79px;
+      .inclusionField {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        .ingredientContainer {
+          padding-left: 0px !important;
+        }
+        .legend {
+          margin-left: 79px;
+        }
       }
     }
   }
