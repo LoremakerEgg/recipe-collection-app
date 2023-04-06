@@ -9,15 +9,17 @@ import FormLabel from "@mui/material/FormLabel";
 import { useNRecipesContext } from "@/context/showNRecipes";
 import { useIngredientContext } from "@/context/ingredient";
 import { useResultContext } from "@/context/resultArray";
+import { useIncludeContext } from "@/context/include";
 
 export default function SearchFilter() {
   const { resultArray, setResultArray } = useResultContext();
   const { showNRec, setShowNRec } = useNRecipesContext();
   const { ingredient, setIngredient } = useIngredientContext();
+  const { include, setInclude } = useIncludeContext();
 
   const fetchRecipeRandom = async () => {
     const randomNumber = Math.floor(Math.random() * 20) + 1;
-    fetch(`http://localhost:3000/api/fetchRecipeRandom`)
+    fetch(`http://localhost:3000/api/fetchAllRecipes`)
       .then((res) => res.json())
       .then((data) => {
         const tempArray = [];
@@ -47,10 +49,18 @@ export default function SearchFilter() {
   };
 
   const fetchRecipeInclude = () => {
-    fetch(`http://localhost:3000/api/fetchinclude?ingredient=${ingredient}`)
+    fetch(`http://localhost:3000/api/fetchIngredients`)
       .then((res) => res.json())
       .then((data) => {
-        setResultArray(data);
+        console.log(data);
+        const ingArray = data.filter((ing) => {
+          return ing.ingredientId == ingredient;
+        });
+        const tempArray = ingArray.map((item) => {
+          return item.recipeId;
+        });
+        console.log(tempArray);
+        setResultArray(tempArray);
       })
       .catch((err) => {
         console.error(err);
@@ -80,12 +90,15 @@ export default function SearchFilter() {
 
   const handleInclude = (e) => {
     e.preventDefault();
+    setInclude(1);
     fetchRecipeInclude();
+    // console.log(resultArray);
+
   };
 
   // const handleExclude = (e) => {
   // e.preventDefault();
-  //   setInclude(2);
+  // setInclude(2);
   // };
 
   const handleIngredient = (e) => {
@@ -96,7 +109,7 @@ export default function SearchFilter() {
   const handleIngredientReset = (e) => {
     e.preventDefault();
     setInclude(0);
-    setIngredient("");
+    setIngredient(0);
   };
 
   const handleQuickSubmit = (e) => {
@@ -157,19 +170,19 @@ export default function SearchFilter() {
                     </option>
                     <option
                       className={styles.ingredientSelectOption}
-                      value="chicken"
+                      value="11821"
                     >
-                      Chicken
+                      Red bell pepper
                     </option>
                     <option
                       className={styles.ingredientSelectOption}
-                      value="beef"
+                      value="11215"
                     >
-                      Beef
+                      Garlic
                     </option>
                     <option
                       className={styles.ingredientSelectOption}
-                      value="cilantro"
+                      value="2012"
                     >
                       Cilantro
                     </option>

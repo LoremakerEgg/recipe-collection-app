@@ -3,8 +3,9 @@ import { ResultWrapper } from "@/context/resultArray";
 import { QuickWrapper } from "@/Archive/quickRecipe";
 import { IngredientWrapper } from "@/context/ingredient";
 import { NRecipesWrapper } from "@/context/showNRecipes";
-import { IncludeWrapper } from "@/Archive/include";
+import { IncludeWrapper } from "@/context/include";
 import { RecipeWrapper } from "@/context/showRecipe";
+
 
 import "@/styles/globals.scss";
 import { Lato } from "next/font/google";
