@@ -4,16 +4,18 @@ From downloaded zip:
 
 1. Navigate to the repo in a terminal of your choice.
 2. run 'npm install'
-3. run 'npm run dev' to start server
-4. You can open the app on the localhost adress provided in the terminal window.
+3. run 'npx prisma generate'
+4. run 'npm run dev' to start server
+5. You can open the app on the localhost adress provided in the terminal window.
 
 From Github repo:
 
 1. Clone GitHub repo https://github.com/LoremakerEgg/recipe-collection-app
 2. Navigate to the repo in a terminal of your choice.
 3. run 'npm install'
-4. run 'npm run dev' to start server
-5. You can open the app on the localhost adress provided in the terminal window.
+4. run 'npx prisma generate'
+5. run 'npm run dev' to start server
+6. You can open the app on the localhost adress provided in the terminal window.
 
 Description of your project
 
