@@ -23,23 +23,28 @@ export default function SearchFilter() {
   const { ingredient, setIngredient } = useIngredientContext();
 
   const fetchRecipeRandom = async () => {
-    // fetch("http://localhost:3000/api/fetchrandom")
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     setResultArray(data.recipes[0]);
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   })
-    //   .finally(() => {
-    //     console.log("Local fetch completed.");
-    //   });
-    const randomNumber = Math.floor(Math.random() * 9) + 1;
-    const { data: AllRecipes, error } = await supabase
-      .from("AllRecipes")
-      .select();
-    console.log(AllRecipes);
-    console.log(error);
+    fetch("http://localhost:3002/api/fetchReciepeRandom")
+      .then((res) => res.json())
+      .then((data) => {
+        setResultArray(data.recipes[0]);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        console.log("Local fetch completed.");
+      });
+    // const randomNumber = Math.floor(Math.random() * 9) + 1;
+    // // const { data: AllRecipes, error } = await supabase
+    // //   .from("AllRecipes")
+    // //   .select();
+    // try {
+    //   const all = await prisma.AllRecipes.findMany({});
+    // } catch (err) {
+    //   console.log(err);
+    // }
+    // console.log(all);
+    // console.log(error);
   };
 
   const fetchRecipeTime = () => {
