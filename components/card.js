@@ -53,8 +53,8 @@ export default function Card(props) {
       <div className={styles.innerCard}>
         <p>{props.title ? props.title : "Recipe"}</p>
         <p>
-          {resultArray.readyInMinutes
-            ? `Cooking time: ${resultArray.readyInMinutes} minutes`
+          {props.time
+            ? `Cooking time: ${props.time} minutes`
             : "No Cooking time available"}
         </p>
         <button

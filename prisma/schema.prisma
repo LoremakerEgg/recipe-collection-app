@@ -29,7 +29,7 @@ model CookingInstructions {
 }
 
 model Ingredients {
-  ingredientId Int         @id @unique
+  ingredientId Int         @id 
   recipe       AllRecipes @relation(fields: [recipeId], references: [id])
   recipeId     Int 
   ingredient   String 

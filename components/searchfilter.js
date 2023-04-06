@@ -5,6 +5,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { useState } from "react";
 
 import { useNRecipesContext } from "@/context/showNRecipes";
 import { useIngredientContext } from "@/context/ingredient";
@@ -15,11 +16,14 @@ export default function SearchFilter() {
   const { showNRec, setShowNRec } = useNRecipesContext();
   const { ingredient, setIngredient } = useIngredientContext();
 
-  const fetchRecipeRandom = () => {
-    fetch("http://localhost:3000/api/fetchrandom")
+  const fetchRecipeRandom = async () => {
+    const randomNumber = Math.floor(Math.random() * 20) + 1;
+    fetch(`http://localhost:3000/api/fetchRecipeRandom`)
       .then((res) => res.json())
       .then((data) => {
-        setResultArray(data.recipes[0]);
+        const tempArray = [];
+        tempArray.push(data[randomNumber]);
+        setResultArray(tempArray);
       })
       .catch((err) => {
         console.error(err);
@@ -55,11 +59,12 @@ export default function SearchFilter() {
       .finally(() => {
         console.log("Local fetch completed.");
       });
+    //const {data, error} = await supabase.from("AllRecipes").select().eq("Ingredients.ingredient", {ingredient}) //need testing
   };
 
   const handleRandomClick = (e) => {
     e.preventDefault();
-    console.log(resultArray);
+    setShowNRec(1);
     fetchRecipeRandom();
   };
 
@@ -67,12 +72,12 @@ export default function SearchFilter() {
     setShowNRec(3);
   };
 
-  const handleShow5 = () => {
-    setShowNRec(5);
+  const handleShow6 = () => {
+    setShowNRec(6);
   };
 
-  const handleShow10 = () => {
-    setShowNRec(10);
+  const handleShow9 = () => {
+    setShowNRec(9);
   };
 
   const handleInclude = (e) => {
@@ -215,20 +220,20 @@ export default function SearchFilter() {
               control={<Radio style={{ color: "rgb(121, 205, 55)" }} />}
               label="Show 3"
               labelPlacement="top"
+              checked
             />
             <FormControlLabel
-              onClick={handleShow5}
-              value="5"
+              onClick={handleShow6}
+              value="6"
               control={<Radio style={{ color: "rgb(121, 205, 55)" }} />}
-              label="Show 5"
+              label="Show 6"
               labelPlacement="top"
             />
             <FormControlLabel
-              onClick={handleShow10}
-              color="#B6D0CC"
-              value="10"
+              onClick={handleShow9}
+              value="9"
               control={<Radio style={{ color: "rgb(121, 205, 55)" }} />}
-              label="Show 10"
+              label="Show 9"
               labelPlacement="top"
             />
           </RadioGroup>
