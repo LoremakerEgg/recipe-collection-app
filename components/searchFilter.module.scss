@@ -30,8 +30,8 @@
   .headerLarge {
     position: relative;
     font-size: 2rem;
-    font-family: "Times New Roman", Times, serif;
-    font-weight: 100;
+    // font-family: "Times New Roman", Times, serif;
+    font-family: "Inter", sans-serif;
     margin-top: 80px;
     color: $secondaryColor;
     &::before {

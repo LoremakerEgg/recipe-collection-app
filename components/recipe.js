@@ -34,6 +34,26 @@ export default function Recipe() {
     setShowFullRecipe(false);
     setShowRecipe("");
   };
+
+  //to remove certain words from instruction:
+  const string = specificInstructions[0].instructions;
+  const words = [
+    "<ol>",
+    "<li>",
+    "<span>",
+    "</span>",
+    "</li>",
+    "</ol>",
+    "<p>",
+    "</p>",
+  ];
+  const removeWords = (str, arr) => {
+    return arr.reduce((acc, val) => {
+      const regex = new RegExp(`${val}`, "g");
+      return acc.replace(regex, "");
+    }, str);
+  };
+
   return (
     <section className={styles.recipeSection}>
       <div className={styles.recipeDiv}>
@@ -64,7 +84,7 @@ export default function Recipe() {
         </div>
         <div className={styles.menuDiv}>
           <h3>Recipe Instructions: </h3>
-          <p>{specificInstructions[0].instructions}</p>
+          <p>{removeWords(string, words)}</p>
         </div>
       </div>
       <div className={styles.ingredientsDiv}>

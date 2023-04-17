@@ -26,6 +26,7 @@ export default function App({ Component, pageProps }) {
                     <FullRecipekWrapper>
                       <main className={lato.className}>
                         <Component {...pageProps} />
+                        <div className="wave" style={{ height: "200px" }}></div>
                       </main>
                     </FullRecipekWrapper>
                   </InstructionWrapper>
