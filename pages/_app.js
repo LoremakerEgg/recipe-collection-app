@@ -1,6 +1,4 @@
-import { RandomWrapper } from "@/Archive/randomRecipe";
 import { ResultWrapper } from "@/context/resultArray";
-import { QuickWrapper } from "@/Archive/quickRecipe";
 import { IngredientWrapper } from "@/context/ingredient";
 import { NRecipesWrapper } from "@/context/showNRecipes";
 import { IncludeWrapper } from "@/context/include";
@@ -18,30 +16,26 @@ const lato = Lato({ weight: "400", subsets: ["latin"] });
 export default function App({ Component, pageProps }) {
   return (
     <ResultWrapper>
-      <QuickWrapper>
-        {" "}
-        <RandomWrapper>
-          <IncludeWrapper>
-            <IngredientWrapper>
-              <RecipeIngredientWrapper>
-                <NRecipesWrapper>
-                  <AllRecipeWrapper>
-                    <RecipeWrapper>
-                      <InstructionWrapper>
-                        <FullRecipekWrapper>
-                          <main className={lato.className}>
-                            <Component {...pageProps} />
-                          </main>
-                        </FullRecipekWrapper>
-                      </InstructionWrapper>
-                    </RecipeWrapper>
-                  </AllRecipeWrapper>
-                </NRecipesWrapper>
-              </RecipeIngredientWrapper>
-            </IngredientWrapper>
-          </IncludeWrapper>
-        </RandomWrapper>{" "}
-      </QuickWrapper>
+      <IncludeWrapper>
+        <IngredientWrapper>
+          <RecipeIngredientWrapper>
+            <NRecipesWrapper>
+              <AllRecipeWrapper>
+                <RecipeWrapper>
+                  <InstructionWrapper>
+                    <FullRecipekWrapper>
+                      <main className={lato.className}>
+                        <Component {...pageProps} />
+                        <div className="wave" style={{ height: "200px" }}></div>
+                      </main>
+                    </FullRecipekWrapper>
+                  </InstructionWrapper>
+                </RecipeWrapper>
+              </AllRecipeWrapper>
+            </NRecipesWrapper>
+          </RecipeIngredientWrapper>
+        </IngredientWrapper>
+      </IncludeWrapper>
     </ResultWrapper>
   );
 }

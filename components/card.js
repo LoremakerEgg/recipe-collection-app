@@ -58,35 +58,39 @@ export default function Card(props) {
   };
 
   return (
-    <div className={styles.card} onClick={handleCardClick} id={props.id}>
-      <img
-        className={styles.cardImage}
-        src={props.image ? props.image : "/eggs-benedict-burger.jpg"}
-        alt="Serving suggestion for recipe"
-      />
-      <div className={styles.innerCard}>
+    <>
+      <div className={styles.cardcontainer}>
         <p>{props.title ? props.title : "Recipe"}</p>
-        <p>
-          {props.time
-            ? `Cooking time: ${props.time} minutes`
-            : "No Cooking time available"}
-        </p>
-        <button
-          className={styles.cardButton}
-          onClick={handleGroupClick}
-          name="addGroup"
-        >
-          Add to Group
-        </button>
-        <button
-          className={styles.cardButton}
-          onClick={handleShoppingClick}
-          name="addGroup"
-        >
-          Shopping List
-        </button>
+        <div className={styles.card} onClick={handleCardClick} id={props.id}>
+          <img
+            className={styles.cardImage}
+            src={props.image ? props.image : "/eggs-benedict-burger.jpg"}
+            alt="Serving suggestion for recipe"
+          />
+          <div className={styles.innerCard}>
+            <p>
+              {props.time
+                ? `Cooking time: ${props.time} minutes`
+                : "No Cooking time available"}
+            </p>
+            <button
+              className={styles.cardButton}
+              onClick={handleGroupClick}
+              name="addGroup"
+            >
+              Add to Group
+            </button>
+            <button
+              className={styles.cardButton}
+              onClick={handleShoppingClick}
+              name="addGroup"
+            >
+              Shopping List
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 // }

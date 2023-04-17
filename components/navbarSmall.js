@@ -6,7 +6,7 @@ const NavbarSmall = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdown = useRef(null);
 
-  //Toggla dropdownmenu when clicking hamburgerMenu.
+  //Toggle dropdownmenu when clicking hamburgerMenu.
   const handleonClick = () => {
     setDropdownVisible(!dropdownVisible);
   };
