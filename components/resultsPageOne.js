@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import Card from "./card";
-import Recipe from "./recipe";
-import styles from "./multiCards.module.scss";
+import styles from "./resultsPageOne.module.scss";
 import { useResultContext } from "@/context/resultArray";
 import { useNRecipesContext } from "@/context/showNRecipes";
 
-export default function MultiCards() {
+export default function ResultsPageOne() {
   const { resultArray } = useResultContext();
   const { showNRec, setShowNRec } = useNRecipesContext();
   let cards;

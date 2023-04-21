@@ -6,6 +6,24 @@
   grid-template-columns: 30% 30% 30%;
   justify-content: center;
 }
+.buttonDiv {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+}
+.button {
+  background-color: $buttonColor;
+  border-radius: 1rem;
+  border: none;
+  padding: 15px;
+  font-size: 1rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $otherDetailColor;
+  }
+}
 
 @media only screen and (max-width: 1560px) {
   .cardGrid {
